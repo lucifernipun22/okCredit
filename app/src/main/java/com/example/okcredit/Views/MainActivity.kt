@@ -1,7 +1,8 @@
-package com.example.okcredit
+package com.example.okcredit.Views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.okcredit.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
