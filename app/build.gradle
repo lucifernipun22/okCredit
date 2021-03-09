@@ -81,4 +81,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.0'
     androidTestCompile "android.arch.core:core-testing:1.1.0"
     testImplementation 'org.robolectric:robolectric:4.0'
+    //lottie
+    implementation 'com.airbnb.android:lottie:3.6.1'
+    //imageslider
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.0.6'
 }

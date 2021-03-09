@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">okCredit</string>
+    <string name="okcredit">OkCredit</string>
+    <string name="next">NEXT</string>
+    <string name="select_your_language">Select your Language</string>
+    <string name="welcome">Welcome</string>
 </resources>
