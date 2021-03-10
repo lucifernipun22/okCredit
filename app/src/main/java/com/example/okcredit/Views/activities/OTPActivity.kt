@@ -22,12 +22,12 @@ class OTPActivity : AppCompatActivity() {
         }
 
         Handler().postDelayed({
-            tvOtp1st.text = "0"
-            tvOtp2nd.text = "0"
-            tvOtp3rd.text = "0"
-            tvOtp4th.text = "0"
-            tvOtp5th.text = "0"
-            tvOtp6th.text = "0"
+            tvOtp1st.text = "1"
+            tvOtp2nd.text = "2"
+            tvOtp3rd.text = "3"
+            tvOtp4th.text = "4"
+            tvOtp5th.text = "5"
+            tvOtp6th.text = "6"
 
         }, 3000)
 
