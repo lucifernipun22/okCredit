@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/dp_10"
                     android:gravity="right"
-                    android:textColor="@color/teal_200"
+                    android:textColor="@color/okCredit"
                     android:padding="@dimen/dp_5"
                     android:text="\u20B9 50"
                     android:textSize="@dimen/sp_20">

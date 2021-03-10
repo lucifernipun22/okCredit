@@ -40,7 +40,7 @@
             app:tabIndicator="@color/black"
             app:tabIndicatorColor="@android:color/background_dark"
             app:tabMode="fixed"
-            app:tabSelectedTextColor="@color/teal_200"
+            app:tabSelectedTextColor="@color/okCredit"
             app:tabTextColor="@android:color/black" />
 
         <androidx.viewpager.widget.ViewPager
