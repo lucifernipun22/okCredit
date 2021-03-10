@@ -7,8 +7,6 @@
     android:layout_height="wrap_content"
     android:background="@drawable/btn_animation_bg"
     android:orientation="vertical">
-
-
     <TextView
         android:id="@+id/tvFilter"
         android:layout_width="wrap_content"
@@ -19,7 +17,6 @@
         android:text="@string/filter"
         android:textColor="@color/black"
         android:textSize="@dimen/sp_20" />
-
     <TextView
         android:id="@+id/tvClearBSD"
         android:layout_width="wrap_content"
@@ -31,7 +28,6 @@
         android:text="@string/clear"
         android:textColor="#FF0404"
         android:textSize="@dimen/sp_20" />
-
     <View
         android:id="@+id/viewLineHere"
         android:layout_width="match_parent"
@@ -41,7 +37,6 @@
         android:background="@color/tab_indicator_gray"
         app:layout_constraintBottom_toBottomOf="@id/tvClearBSD"
         app:layout_constraintEnd_toEndOf="parent" />
-
     <TextView
         android:id="@+id/tvReminderDate"
         android:layout_width="wrap_content"
@@ -53,7 +48,6 @@
         android:gravity="center"
         android:text="@string/reminder_date"
         android:textColor="@color/black" />
-
     <TextView
         android:id="@+id/btnTodayBDS"
         android:layout_width="wrap_content"
@@ -65,7 +59,6 @@
         android:gravity="center"
         android:text="@string/today"
         android:textColor="@color/black" />
-
     <TextView
         android:id="@+id/btnPendingSD"
         android:layout_width="wrap_content"
@@ -78,7 +71,6 @@
         android:gravity="center"
         android:text="@string/pending"
         android:textColor="@color/black" />
-
     <TextView
         android:id="@+id/btnUpcomingBSD"
         android:layout_width="wrap_content"
@@ -91,7 +83,6 @@
         android:gravity="center"
         android:text="@string/upcoming"
         android:textColor="@color/black" />
-
     <TextView
         android:id="@+id/tvSortBy"
         android:layout_width="wrap_content"
@@ -102,7 +93,6 @@
         android:fontFamily="sans-serif-medium"
         android:text="@string/sort_by"
         android:textColor="@color/black" />
-
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
@@ -110,7 +100,6 @@
         android:layout_below="@+id/tvSortBy"
         android:layout_marginStart="@dimen/dp_25"
         android:layout_marginTop="@dimen/dp_30">
-
         <RadioButton
             android:id="@+id/radioName"
             android:layout_width="fill_parent"
@@ -119,7 +108,6 @@
             android:checked="true"
             android:fontFamily="sans-serif-medium"
             android:text="  Name" />
-
         <RadioButton
             android:id="@+id/radioAmount"
             android:layout_width="fill_parent"
@@ -128,7 +116,6 @@
             android:checked="false"
             android:fontFamily="sans-serif-medium"
             android:text="  Amount" />
-
         <RadioButton
             android:id="@+id/radioLatest"
             android:layout_width="fill_parent"
@@ -138,7 +125,6 @@
             android:fontFamily="sans-serif-medium"
             android:text="  Latest" />
     </RadioGroup>
-
     <View
         android:id="@+id/viewSecond"
         android:layout_width="match_parent"
@@ -146,7 +132,6 @@
         android:layout_below="@id/radioGroup"
         android:layout_marginTop="@dimen/dp_30"
         android:background="@color/tab_indicator_gray" />
-
     <TextView
         android:id="@+id/btnApplyBSD"
         android:layout_width="wrap_content"
@@ -160,7 +145,6 @@
         android:gravity="center"
         android:text="Apply"
         android:textColor="@color/white" />
-
     <TextView
         android:id="@+id/btnCancelBSD"
         android:layout_width="wrap_content"
@@ -174,5 +158,4 @@
         android:gravity="center"
         android:text="Cancel"
         android:textColor="@color/black" />
-
 </RelativeLayout>

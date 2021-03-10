@@ -14,6 +14,16 @@
     <color name="tab_indicator_gray">#c0c0c0</color>
     <color name="gradient_start_color">#4c84ff</color>
     <color name="gradient_end_color">#18a3fe</color>
+    <color name="colorPrimary">#4caf50</color>
+    <color name="colorPrimaryDark">#388e3c</color>
+    <color name="black_44">#444444</color>
+    <color name="black_88">#888888</color>
+    <color name="red">#d0021b</color>
+    <color name="date_container">#3f00e676</color>
+    <color name="green_dark">#2b752e</color>
+    <color name="date_color">#c7f2dd</color>
+    <color name="text_default">#666</color>
+    <color name="black_66">#444444</color>
 
 
 </resources>

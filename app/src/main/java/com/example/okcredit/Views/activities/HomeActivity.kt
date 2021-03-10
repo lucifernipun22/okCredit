@@ -125,8 +125,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setViewPagerAdapter() {
         pagerAdapter = ViewPagerFragmentAdapter(supportFragmentManager)
-        home_viewPager.adapter = pagerAdapter
-        tabLayout.setupWithViewPager(home_viewPager)
+        home_viewPager.setAdapter(pagerAdapter)
+        tabLayout.setupWithViewPager(home_viewPager);
     }
-
 }
