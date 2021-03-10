@@ -11,24 +11,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OkCredit">
         <activity android:name=".Views.activities.AddCustomerActivity"></activity>
-        <activity android:name=".Views.activities.HomeActivity" />
-        <activity android:name=".Views.activities.BusinessNameActivity"></activity>
-        <activity android:name=".Views.activities.OTPActivity">
-           </activity>
-        <activity android:name=".Views.activities.MobileNumberActivity"/>
-        <activity android:name=".Views.activities.IntroductionActivity"></activity>
-        <activity android:name=".Views.activities.LanguageSelect" >
-        </activity>
-        <activity android:name=".Views.activities.SplashScreen1">
+        <activity android:name=".Views.activities.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Views.activities.MainActivity" >
-
-        </activity>
-        <activity android:name=".Views.activities.SplashScreen2" />
+        <activity android:name=".Views.activities.BusinessNameActivity"></activity>
+        <activity android:name=".Views.activities.OTPActivity"></activity>
+        <activity android:name=".Views.activities.MobileNumberActivity" ></activity>
+        <activity android:name=".Views.activities.SyncCloudDataActivity"></activity>
+        <activity android:name=".Views.activities.FindCustomerActivity"></activity>
+        <activity android:name=".Views.activities.IntroductionActivity"></activity>
+        <activity android:name=".Views.activities.LanguageSelect"></activity>
+        <activity android:name=".Views.activities.SplashScreen1"></activity>
+        <activity android:name=".Views.activities.OTPVerfityActivity" ></activity>
+        <activity android:name=".Views.activities.SplashScreen2" ></activity>
 
     </application>
 
