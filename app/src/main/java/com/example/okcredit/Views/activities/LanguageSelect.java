@@ -28,13 +28,21 @@ public class LanguageSelect extends AppCompatActivity {
         btnEnglish = findViewById(R.id.languageEnglish);
         tvWelcome = findViewById(R.id.welcome);
         tvSelectLanguage = findViewById(R.id.selectLanguage);
-        btnEnglish.setOnClickListener(new View.OnClickListener() {
+
+        btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LanguageSelect.this, IntroductionActivity.class);
+                Intent intent = new Intent(LanguageSelect.this, MobileNumberActivity.class);
                 startActivity(intent);
             }
         });
+
+//        btnEnglish.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
         /*
         btnHindi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,8 +58,6 @@ public class LanguageSelect extends AppCompatActivity {
                 changeLanguage("en");
             }
         });
-
-
 
     }
     private void changeLanguage(String language){
