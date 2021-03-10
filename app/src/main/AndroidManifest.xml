@@ -9,17 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OkCredit">
-        <activity android:name=".Views.BusinessNameActivity">
-
-        </activity>
+        <activity android:name=".Views.BusinessNameActivity"></activity>
         <activity android:name=".Views.OTPActivity"></activity>
-        <activity android:name=".Views.MobileNumberActivity">
+        <activity android:name=".Views.MobileNumberActivity"/>
+        <activity android:name=".Views.IntroductionActivity"></activity>
+        <activity android:name=".Views.LanguageSelect" >
+        </activity>
+        <activity android:name=".Views.SplashScreen1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".Views.MainActivity" />
+        <activity android:name=".Views.SplashScreen2" />
+
     </application>
 
 </manifest>
