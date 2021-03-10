@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".Views.activities.SyncCloudDataActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:text="@string/downloading_your_data"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_20"
+        app:layout_constraintBottom_toTopOf="@+id/animation_view"
+        app:layout_constraintEnd_toEndOf="@id/animation_view"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation_view"
         android:layout_width="match_parent"
@@ -17,6 +28,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/cloud_sync"
-        />
+        app:lottie_rawRes="@raw/cloud_sync" />
 </androidx.constraintlayout.widget.ConstraintLayout>

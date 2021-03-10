@@ -4,4 +4,5 @@
     <dimen name="dp_250">250dp</dimen>
     <dimen name="dp_180">180dp</dimen>
     <dimen name="dp_400">400dp</dimen>
+    <dimen name="dp_130">130dp</dimen>
 </resources>

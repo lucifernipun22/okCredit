@@ -9,7 +9,7 @@
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation_view"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_150"
+        android:layout_height="@dimen/dp_130"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,4 +18,14 @@
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/otp_verify_success" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="Verification Successful"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/animation_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>

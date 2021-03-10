@@ -23,20 +23,38 @@ class OTPActivity : AppCompatActivity() {
 
         Handler().postDelayed({
             tvOtp1st.text = "1"
-            tvOtp2nd.text = "2"
-            tvOtp3rd.text = "3"
-            tvOtp4th.text = "4"
-            tvOtp5th.text = "5"
-            tvOtp6th.text = "6"
+//            tvOtp2nd.text = "2"
+//            tvOtp3rd.text = "3"
+//            tvOtp4th.text = "4"
+//            tvOtp5th.text = "5"
+//            tvOtp6th.text = "6"
 
         }, 3000)
+        Handler().postDelayed({
+            tvOtp2nd.text = "2"
+        }, 3100)
+        Handler().postDelayed({
+            tvOtp3rd.text = "3"
+        }, 3200)
+        Handler().postDelayed({
+            tvOtp4th.text = "4"
+        }, 3300)
+        Handler().postDelayed({
+            tvOtp5th.text = "5"
+        }, 3400)
+        Handler().postDelayed({
+            tvOtp5th.text = "5"
+        }, 3500)
+        Handler().postDelayed({
+            tvOtp6th.text = "6"
+        }, 3600)
 
         Handler().postDelayed({
 
             val intent = Intent(this, OTPVerfityActivity::class.java)
             startActivity(intent)
 
-        }, 5000)
+        }, 4500)
 
     }
 
