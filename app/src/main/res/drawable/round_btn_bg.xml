@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/okcredit"
+
+        />
+    <corners
+        android:bottomLeftRadius="180dip"
+        android:bottomRightRadius="180dip"
+        android:topLeftRadius="180dip"
+        android:topRightRadius="180dip" />
+<!--    <size-->
+<!--        android:width="@dimen/dp_100"-->
+<!--        android:height="@dimen/dp_100" />-->
+</shape>
