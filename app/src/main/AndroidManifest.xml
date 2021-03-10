@@ -11,8 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OkCredit">
         <activity android:name=".Views.activities.AddCustomerActivity"></activity>
-        <activity android:name=".Views.MainActivity" />
-        <activity android:name=".Views.activities.HomeActivity">
+        <activity android:name=".Views.activities.HomeActivity" />
+        <activity android:name=".Views.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
