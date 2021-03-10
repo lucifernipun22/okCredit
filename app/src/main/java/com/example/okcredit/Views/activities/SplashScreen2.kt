@@ -1,4 +1,4 @@
-package com.example.okcredit.Views
+package com.example.okcredit.Views.activities
 
 import android.content.Intent
 import android.os.Bundle

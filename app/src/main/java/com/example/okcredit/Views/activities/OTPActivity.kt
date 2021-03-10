@@ -1,13 +1,13 @@
-package com.example.okcredit.Views
+package com.example.okcredit.Views.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.example.okcredit.R
+import com.example.okcredit.Views.values.Const
+import com.example.okcredit.Views.values.SharedPref
 import kotlinx.android.synthetic.main.activity_o_t_p.*
-import java.util.*
-import kotlin.concurrent.schedule
 
 class OTPActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +41,6 @@ class OTPActivity : AppCompatActivity() {
     }
 
     private fun setData() {
-        tvMobileNumberOTP.text = SharedPref.readStringData(Const.MOBILE_NUMBER_KEY)
+//        tvMobileNumberOTP.text = SharedPref.readStringData(Const.MOBILE_NUMBER_KEY)
     }
 }

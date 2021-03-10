@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".Views.activities.HomeActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10">
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_5"
+            android:background="@drawable/rectangle_rounded_corners_gray"
+            android:drawableStart="@drawable/ic_menu"
+            android:drawableEnd="@drawable/ic_home"
+            android:drawablePadding="@dimen/dp_10"
+            android:hint="@string/search_add"></EditText>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:minHeight="?attr/actionBarSize"
+            app:tabGravity="fill"
+            app:tabIndicator="@color/black"
+            app:tabIndicatorColor="@android:color/background_dark"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/okCredit"
+            app:tabTextColor="@android:color/black" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/home_viewPager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_5" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnAddCustomer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_margin="@dimen/dp_10"
+        android:background="@drawable/rounded_rect_green"
+        android:gravity="center"
+        android:text="@string/add_customer"
+        android:textColor="@color/white">
+
+    </Button>
+
+</LinearLayout>

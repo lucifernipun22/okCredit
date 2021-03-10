@@ -1,8 +1,8 @@
-package com.example.okcredit.Views
+package com.example.okcredit.Views.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.example.okcredit.R
 import kotlinx.android.synthetic.main.activity_business_name.*
 
@@ -13,14 +13,14 @@ class BusinessNameActivity : AppCompatActivity() {
 
         btnEnterBusinessName.setOnClickListener {
             if (isDataValid()) {
-                SharedPref.writeStringToPref(Const.BUSINESS_NAME, etBusinessName.text.toString())
-                Toast.makeText(
-                    this,
-                    SharedPref.readStringData(Const.BUSINESS_NAME),
-                    Toast.LENGTH_SHORT
-                ).show()
+                gotoHomePage()
             }
         }
+    }
+
+    private fun gotoHomePage() {
+        intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
     }
 
     private fun isDataValid(): Boolean {

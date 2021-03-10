@@ -1,4 +1,4 @@
-package com.example.okcredit.Views
+package com.example.okcredit.Views.values
 
 class Const {
     companion object {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<!--    <string name="okcredit">OkCredit</string>-->
 <!--    <string name="next">अगला</string>-->
 <!--    <string name="select_your_language">अपनी भाषा का चयन करें</string>-->
 <!--    <string name="welcome">स्वागत हे</string>-->
@@ -15,7 +16,7 @@
     <string name="todo">TODO</string>
     <string name="enter_your_mobile_number">Enter Your Mobile Number</string>
     <string name="welcome">Welcome</string>
-    <string name="select_your_language">अपनी भाषा का चयन करें</string>
+    <string name="select_your_language">Select your Language</string>
     <string name="your_otp_will_be_delivered_soon_on">Your OTP will be delivered soon on</string>
     <string name="edit_mobile">Edit Mobile</string>
     <string name="skip">Skip</string>
@@ -23,5 +24,9 @@
     <string name="business_name">Business Name</string>
     <string name="your_name_will_be_displayed_on_any_transactional">Your name will be displayed on any transactional SMS delivered to your customer</string>
     <string name="please_be_patience">Please be patience</string>
-    <string name="next">अगला</string>
+    <string name="next">NEXT</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_customer">Add Customer</string>
+    <string name="Rs">\u20B9</string>
+    <string name="search_add">Search or Add</string>
 </resources>

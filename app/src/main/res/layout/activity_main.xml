@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Views.MainActivity">
+    tools:context=".Views.activities.MainActivity">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/otp" />
+        app:lottie_rawRes="@raw/angry" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

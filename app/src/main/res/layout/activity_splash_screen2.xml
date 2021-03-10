@@ -7,7 +7,7 @@
     android:layout_gravity="center"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".Views.SplashScreen2">
+    tools:context=".Views.activities.SplashScreen2">
 
     <LinearLayout
         android:id="@+id/linearLayout2"

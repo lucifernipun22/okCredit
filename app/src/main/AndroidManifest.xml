@@ -3,25 +3,32 @@
     package="com.example.okcredit">
 
     <application
+        android:name=".Views.values.OkCreditApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OkCredit">
-        <activity android:name=".Views.BusinessNameActivity"></activity>
-        <activity android:name=".Views.OTPActivity"></activity>
-        <activity android:name=".Views.MobileNumberActivity"></activity>
-        <activity android:name=".Views.IntroductionActivity"></activity>
-        <activity android:name=".Views.LanguageSelect"></activity>
-        <activity android:name=".Views.SplashScreen1"></activity>
-        <activity android:name=".Views.MainActivity">
+        <activity android:name=".Views.activities.AddCustomerActivity"></activity>
+        <activity android:name=".Views.activities.HomeActivity" />
+        <activity android:name=".Views.activities.BusinessNameActivity"></activity>
+        <activity android:name=".Views.activities.OTPActivity">
+           </activity>
+        <activity android:name=".Views.activities.MobileNumberActivity"/>
+        <activity android:name=".Views.activities.IntroductionActivity"></activity>
+        <activity android:name=".Views.activities.LanguageSelect" >
+        </activity>
+        <activity android:name=".Views.activities.SplashScreen1">
+
+        </activity>
+        <activity android:name=".Views.activities.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Views.SplashScreen2" />
+        <activity android:name=".Views.activities.SplashScreen2" />
 
     </application>
 
