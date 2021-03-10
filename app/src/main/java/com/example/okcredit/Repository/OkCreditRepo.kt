@@ -18,4 +18,8 @@ class OkCreditRepo(val okCreditDAO: OkCreditDAO) {
         return okCreditDAO.getCustomersList()
     }
 
+    fun getCustomer(name: String): LiveData<List<CustomerEntity>> {
+        return okCreditDAO.getCustomer(name)
+    }
+
 }

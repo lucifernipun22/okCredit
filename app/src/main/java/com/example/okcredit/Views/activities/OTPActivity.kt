@@ -22,25 +22,43 @@ class OTPActivity : AppCompatActivity() {
         }
 
         Handler().postDelayed({
-            tvOtp1st.text = "0"
-            tvOtp2nd.text = "0"
-            tvOtp3rd.text = "0"
-            tvOtp4th.text = "0"
-            tvOtp5th.text = "0"
-            tvOtp6th.text = "0"
+            tvOtp1st.text = "1"
+//            tvOtp2nd.text = "2"
+//            tvOtp3rd.text = "3"
+//            tvOtp4th.text = "4"
+//            tvOtp5th.text = "5"
+//            tvOtp6th.text = "6"
 
-        }, 5000)
+        }, 3000)
+        Handler().postDelayed({
+            tvOtp2nd.text = "2"
+        }, 3100)
+        Handler().postDelayed({
+            tvOtp3rd.text = "3"
+        }, 3200)
+        Handler().postDelayed({
+            tvOtp4th.text = "4"
+        }, 3300)
+        Handler().postDelayed({
+            tvOtp5th.text = "5"
+        }, 3400)
+        Handler().postDelayed({
+            tvOtp5th.text = "5"
+        }, 3500)
+        Handler().postDelayed({
+            tvOtp6th.text = "6"
+        }, 3600)
 
         Handler().postDelayed({
 
-            val intent = Intent(this, BusinessNameActivity::class.java)
+            val intent = Intent(this, OTPVerfityActivity::class.java)
             startActivity(intent)
 
-        }, 6000)
+        }, 4500)
 
     }
 
     private fun setData() {
-//        tvMobileNumberOTP.text = SharedPref.readStringData(Const.MOBILE_NUMBER_KEY)
+        tvMobileNumberOTP.text = SharedPref.readStringData(Const.MOBILE_NUMBER_KEY)
     }
 }

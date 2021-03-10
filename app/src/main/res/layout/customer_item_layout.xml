@@ -1,115 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_margin="@dimen/dp_8">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_5"
+        android:background="@drawable/rounded_rect_green"
+        android:gravity="center"
+        android:text="S"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_30"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_fullname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_5"
+        android:text="Sarika"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_20"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/tv_name"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_5"
+        android:text="\u20B9 50"
+        android:textColor="@color/okCredit"
+        android:textSize="@dimen/sp_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_5"
+        android:text="Added on 09 Mar,2021"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_20"
+        app:layout_constraintStart_toEndOf="@+id/tv_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_fullname" />
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_5"
+        android:text="Due"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_price" />
+
+    <androidx.constraintlayout.widget.Barrier
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/customerLinearLayout">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp_5"
-            android:layout_gravity="center"
-            android:layout_weight="5">
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="@dimen/dp_50"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp_5"
-                android:background="@drawable/rounded_rect_green"
-                android:gravity="center"
-                android:padding="@dimen/dp_5"
-                android:text="S"
-                android:textColor="@color/black"
-                android:textSize="@dimen/dp_30">
-
-            </TextView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_fullname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/dp_5"
-                    android:text="Sarika"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/sp_20">
-
-                </TextView>
-
-                <TextView
-                    android:id="@+id/tv_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/dp_10"
-                    android:gravity="right"
-                    android:textColor="@color/okCredit"
-                    android:padding="@dimen/dp_5"
-                    android:text="\u20B9 50"
-                    android:textSize="@dimen/sp_20">
-
-                </TextView>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/dp_5"
-                    android:drawablePadding="@dimen/dp_10"
-                    android:drawableStart="@drawable/ic_user"
-                    android:text="Added on 09 Mar,2021"
-                    android:textSize="@dimen/sp_20">
-
-                </TextView>
-
-                <TextView
-                    android:id="@+id/tv_status"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/dp_10"
-                    android:gravity="right"
-                    android:padding="@dimen/dp_5"
-                    android:text="Due"
-                    android:textSize="@dimen/sp_20">
-
-                </TextView>
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:layout_margin="@dimen/dp_5"
-                android:background="@color/black"></View>
-        </LinearLayout>
-
-    </LinearLayout>
-
-</LinearLayout>
-
+        app:barrierDirection="top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

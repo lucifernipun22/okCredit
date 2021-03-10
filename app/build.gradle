@@ -95,4 +95,5 @@ dependencies {
 
     //dexter
     implementation 'com.karumi:dexter:4.2.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }

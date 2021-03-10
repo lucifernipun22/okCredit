@@ -33,7 +33,7 @@ class CustomerFragment : Fragment(), OnRowItemClicked {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViews(view);
+        initViews(view)
 
     }
 
@@ -56,13 +56,11 @@ class CustomerFragment : Fragment(), OnRowItemClicked {
             rv_customerItems.setAdapter(customerAdapter)
         })
 
-
     }
 
     companion object {
         fun newInstance(): CustomerFragment {
             return CustomerFragment()
-
         }
     }
 }
