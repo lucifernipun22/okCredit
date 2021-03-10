@@ -7,7 +7,7 @@ import com.example.okcredit.Data.local.CustomerEntity
 import com.example.okcredit.R
 import com.example.okcredit.ViewModel.CustomerViewModel
 import com.example.okcredit.ViewModel.CustomerViewModelFactory
-import com.example.okcredit.Views.OkCreditApplication
+import com.example.okcredit.Views.values.OkCreditApplication
 import kotlinx.android.synthetic.main.activity_add_customer.*
 
 class AddCustomerActivity : AppCompatActivity() {

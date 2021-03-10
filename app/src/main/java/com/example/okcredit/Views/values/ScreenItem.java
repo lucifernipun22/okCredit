@@ -1,4 +1,4 @@
-package com.example.okcredit.Views;
+package com.example.okcredit.Views.values;
 
 public class ScreenItem {
 

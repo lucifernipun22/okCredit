@@ -1,9 +1,11 @@
-package com.example.okcredit.Views
+package com.example.okcredit.Views.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.okcredit.R
+import com.example.okcredit.Views.values.Const
+import com.example.okcredit.Views.values.SharedPref
 import kotlinx.android.synthetic.main.activity_mobile_number.*
 
 class MobileNumberActivity : AppCompatActivity() {
@@ -21,6 +23,11 @@ class MobileNumberActivity : AppCompatActivity() {
                 val intent = Intent(this, OTPActivity::class.java)
                 startActivity(intent)
             }
+        }
+
+        tvLanguage.setOnClickListener {
+            val intent = Intent(this, LanguageSelect::class.java)
+            startActivity(intent)
         }
     }
 

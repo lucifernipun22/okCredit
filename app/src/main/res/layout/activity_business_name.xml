@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Views.MobileNumberActivity">
+    tools:context=".Views.activities.MobileNumberActivity">
 
     <ImageView
         android:id="@+id/okCreditLogo"
@@ -18,7 +18,7 @@
         app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_group" />
+        app:srcCompat="@drawable/ic_okcredit" />
 
     <TextView
         android:id="@+id/textView"

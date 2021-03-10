@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.okcredit.R;
-import com.example.okcredit.Views.ScreenItem;
+import com.example.okcredit.Views.values.ScreenItem;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.okcredit.Views;
+package com.example.okcredit.Views.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,15 +9,13 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.okcredit.Adapter.IntroViewPagerAdapter;
 import com.example.okcredit.R;
-import com.example.okcredit.Views.activities.HomeActivity;
+import com.example.okcredit.Views.values.ScreenItem;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;

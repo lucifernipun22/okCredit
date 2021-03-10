@@ -1,4 +1,4 @@
-package com.example.okcredit.Views;
+package com.example.okcredit.Views.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.okcredit.R;
-
-import okhttp3.internal.http2.Http2Reader;
 
 public class SplashScreen1 extends AppCompatActivity {
 

@@ -12,7 +12,7 @@ import com.example.okcredit.Data.local.CustomerEntity
 import com.example.okcredit.R
 import com.example.okcredit.ViewModel.CustomerViewModel
 import com.example.okcredit.ViewModel.CustomerViewModelFactory
-import com.example.okcredit.Views.OkCreditApplication
+import com.example.okcredit.Views.values.OkCreditApplication
 import com.example.okcredit.Views.adapters.CustomerAdapter
 import com.example.okcredit.Views.interfaces.OnRowItemClicked
 import kotlinx.android.synthetic.main.fragment_customer.*

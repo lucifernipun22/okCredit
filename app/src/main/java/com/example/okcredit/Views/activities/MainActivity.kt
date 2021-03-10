@@ -1,4 +1,4 @@
-package com.example.okcredit.Views
+package com.example.okcredit.Views.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
