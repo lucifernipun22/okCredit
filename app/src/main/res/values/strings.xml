@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">okCredit</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_customer">Add Customer</string>
+    <string name="Rs">\u20B9</string>
+    <string name="search_add">Search or Add</string>
     <string name="okcredit">OkCredit</string>
     <string name="language">Language</string>
     <string name="by_continuing_you_agree_to_our">By continuing you agree to our </string>

@@ -25,4 +25,8 @@
     <string name="your_name_will_be_displayed_on_any_transactional">Your name will be displayed on any transactional SMS delivered to your customer</string>
     <string name="please_be_patience">Please be patience</string>
     <string name="next">NEXT</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_customer">Add Customer</string>
+    <string name="Rs">\u20B9</string>
+    <string name="search_add">Search or Add</string>
 </resources>

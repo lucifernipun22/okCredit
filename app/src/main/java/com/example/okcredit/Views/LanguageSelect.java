@@ -31,13 +31,14 @@ public class LanguageSelect extends AppCompatActivity {
         btnEnglish = findViewById(R.id.languageEnglish);
         tvWelcome = findViewById(R.id.welcome);
         tvSelectLanguage = findViewById(R.id.selectLanguage);
-        /*btnNext.setOnClickListener(new View.OnClickListener() {
+        btnEnglish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LanguageSelect.this, IntroductionActivity.class);
                 startActivity(intent);
             }
         });
+        /*
         btnHindi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
