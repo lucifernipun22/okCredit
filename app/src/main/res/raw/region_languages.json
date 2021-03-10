@@ -1,0 +1,219 @@
+{
+  "AP": [
+    "te",
+    "en",
+    "ta",
+    "afh"
+  ],
+  "AR": [
+    "en",
+    "bn",
+    "afh",
+    "hi"
+  ],
+  "AS": [
+    "en",
+    "bn",
+    "afh",
+    "hi"
+  ],
+  "BR": [
+    "hi",
+    "afh",
+    "en",
+    "bn"
+  ],
+  "CT": [
+    "hi",
+    "afh",
+    "en",
+    "bn"
+  ],
+  "GA": [
+    "en",
+    "mr",
+    "afh",
+    "hi"
+  ],
+  "GJ": [
+    "gu",
+    "afh",
+    "hi",
+    "en"
+  ],
+  "HR": [
+    "hi",
+    "afh",
+    "pa",
+    "en",
+    "gu"
+  ],
+  "HP": [
+    "hi",
+    "afh",
+    "en",
+    "pa"
+  ],
+  "JK": [
+    "hi",
+    "afh",
+    "en",
+    "pa"
+  ],
+  "JH": [
+    "hi",
+    "afh",
+    "en",
+    "bn"
+  ],
+  "KA": [
+    "kn",
+    "te",
+    "en",
+    "afh"
+  ],
+  "KL": [
+    "ml",
+    "ta",
+    "en",
+    "afh"
+  ],
+  "MP": [
+    "hi",
+    "afh",
+    "en",
+    "mr"
+  ],
+  "MH": [
+    "mr",
+    "afh",
+    "en",
+    "hi"
+  ],
+  "MN": [
+    "en",
+    "bn",
+    "afh",
+    "hi"
+  ],
+  "ML": [
+    "en",
+    "bn",
+    "afh",
+    "hi"
+  ],
+  "MZ": [
+    "en",
+    "bn",
+    "afh",
+    "hi"
+  ],
+  "NL": [
+    "en",
+    "bn",
+    "afh",
+    "hi"
+  ],
+  "OR": [
+    "en",
+    "afh",
+    "hi",
+    "bn"
+  ],
+  "PB": [
+    "pa",
+    "afh",
+    "hi",
+    "en"
+  ],
+  "RJ": [
+    "hi",
+    "afh",
+    "en",
+    "gu"
+  ],
+  "SK": [
+    "en",
+    "bn",
+    "afh",
+    "hi"
+  ],
+  "TN": [
+    "ta",
+    "en",
+    "afh",
+    "hi"
+  ],
+  "TG": [
+    "te",
+    "en",
+    "afh",
+    "hi"
+  ],
+  "TR": [
+    "bn",
+    "en",
+    "afh",
+    "hi"
+  ],
+  "UT": [
+    "hi",
+    "afh",
+    "en",
+    "bn"
+  ],
+  "UP": [
+    "hi",
+    "afh",
+    "en",
+    "pa"
+  ],
+  "WB": [
+    "bn",
+    "afh",
+    "en",
+    "hi"
+  ],
+  "AN": [
+    "en",
+    "ta",
+    "bn",
+    "afh"
+  ],
+  "CH": [
+    "pa",
+    "hi",
+    "afh",
+    "en"
+  ],
+  "DL": [
+    "hi",
+    "afh",
+    "en",
+    "pa"
+  ],
+  "DN": [
+    "gu",
+    "en",
+    "afh",
+    "hi"
+  ],
+  "DD": [
+    "gu",
+    "en",
+    "afh",
+    "hi"
+  ],
+  "LD": [
+    "en",
+    "afh",
+    "hi",
+    "gu"
+  ],
+  "PY": [
+    "en",
+    "ta",
+    "bn",
+    "afh"
+  ]
+}

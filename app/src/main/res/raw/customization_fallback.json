@@ -1,0 +1,505 @@
+[
+    {
+      "target": "home_side_navigation",
+      "component": {
+        "version": "v1alpha",
+        "kind": "vertical_list",
+        "metadata": {
+          "name": "VerticalList",
+          "debug": true,
+          "lang": "en"
+        },
+        "items": [
+          {
+            "version": "v1alpha",
+            "kind": "menu_item",
+            "metadata": {
+              "Name": "Share"
+            },
+            "event_handlers": {
+              "view": [
+                {
+                  "action": "track",
+                  "event": "Entry Point Viewed",
+                  "properties": {
+                    "Source": "Side Menu",
+                    "Type": "Share"
+                  }
+                }
+              ],
+              "click": [
+                {
+                  "action": "navigate",
+                  "url": "https://okcredit.app/merchant/v1/share"
+                },
+                {
+                  "action": "track",
+                  "event": "Share App",
+                  "properties": {
+                    "Screen": "Drawer"
+                  }
+                }
+              ]
+            },
+            "title": "Share",
+            "icon": "https://storage.googleapis.com/prod__dynamicui__public__dataset/icons/ic_share%404x.webp"
+          },
+          {
+            "version": "v1alpha",
+            "kind": "menu_item",
+            "metadata": {
+              "Name": "Help"
+            },
+            "event_handlers": {
+              "view": [
+                {
+                  "action": "track",
+                  "event": "Entry Point Viewed",
+                  "properties": {
+                    "Source": "Side Menu",
+                    "Type": "Help"
+                  }
+                }
+              ],
+              "click": [
+                {
+                  "action": "navigate",
+                  "url": "https://okcredit.app/merchant/v1/helpv2"
+                },
+                {
+                  "action": "track",
+                  "event": "View Help",
+                  "properties": {
+                    "Screen": "Drawer"
+                  }
+                }
+              ]
+            },
+            "title": "Help",
+            "icon": "https://storage.googleapis.com/prod__dynamicui__public__dataset/icons/ic_help_outline%404x.webp"
+          },
+          {
+            "version": "v1alpha",
+            "kind": "menu_item",
+            "metadata": {
+              "Name": "About Us"
+            },
+            "event_handlers": {
+              "view": [
+                {
+                  "action": "track",
+                  "event": "Entry Point Viewed",
+                  "properties": {
+                    "Source": "Side Menu",
+                    "Type": "About Us"
+                  }
+                }
+              ],
+              "click": [
+                {
+                  "action": "navigate",
+                  "url": "https://www.okcredit.in"
+                },
+                {
+                  "action": "track",
+                  "event": "View About",
+                  "properties": {
+                    "Screen": "Drawer"
+                  }
+                }
+              ]
+            },
+            "title": "About Us",
+            "icon": "https://storage.googleapis.com/prod__dynamicui__public__dataset/icons/ic_info_outline%404x.webp"
+          },
+          {
+            "version": "v1alpha",
+            "kind": "menu_item",
+            "metadata": {
+              "Name": "Privacy Policy"
+            },
+            "event_handlers": {
+              "view": [
+                {
+                  "action": "track",
+                  "event": "Entry Point Viewed",
+                  "properties": {
+                    "Source": "Side Menu",
+                    "Type": "Privacy Policy"
+                  }
+                }
+              ],
+              "click": [
+                {
+                  "action": "navigate",
+                  "url": "https://okcredit.app/merchant/v1/privacy"
+                },
+                {
+                  "action": "track",
+                  "event": "View Privacy",
+                  "properties": {
+                    "Screen": "Drawer"
+                  }
+                }
+              ]
+            },
+            "title": "Privacy Policy",
+            "icon": "https://storage.googleapis.com/prod__dynamicui__public__dataset/icons/ic_lock_outline%404x.webp"
+          }
+        ]
+      }
+    },
+  {
+    "target": "home_side_navigation",
+    "component": {
+      "version": "v1alpha",
+      "kind": "vertical_list",
+      "metadata": {
+        "name": "VerticalList",
+        "debug": true,
+        "lang": "en"
+      },
+      "items": [
+        {
+          "version": "v1alpha",
+          "kind": "menu_item",
+          "metadata": {
+            "Name": "Share"
+          },
+          "event_handlers": {
+            "view": [
+              {
+                "action": "track",
+                "event": "Entry Point Viewed",
+                "properties": {
+                  "Source": "Side Menu",
+                  "Type": "Share"
+                }
+              }
+            ],
+            "click": [
+              {
+                "action": "navigate",
+                "url": "https://okcredit.app/merchant/v1/share"
+              },
+              {
+                "action": "track",
+                "event": "Share App",
+                "properties": {
+                  "Screen": "Drawer"
+                }
+              }
+            ]
+          },
+          "title": "Share",
+          "icon": "https://storage.googleapis.com/prod__dynamicui__public__dataset/icons/ic_share%404x.webp"
+        },
+        {
+          "version": "v1alpha",
+          "kind": "menu_item",
+          "metadata": {
+            "Name": "Help"
+          },
+          "event_handlers": {
+            "view": [
+              {
+                "action": "track",
+                "event": "Entry Point Viewed",
+                "properties": {
+                  "Source": "Side Menu",
+                  "Type": "Help"
+                }
+              }
+            ],
+            "click": [
+              {
+                "action": "navigate",
+                "url": "https://okcredit.app/merchant/v1/helpv2"
+              },
+              {
+                "action": "track",
+                "event": "View Help",
+                "properties": {
+                  "Screen": "Drawer"
+                }
+              }
+            ]
+          },
+          "title": "Help",
+          "icon": "https://storage.googleapis.com/prod__dynamicui__public__dataset/icons/ic_help_outline%404x.webp"
+        },
+        {
+          "version": "v1alpha",
+          "kind": "menu_item",
+          "metadata": {
+            "Name": "About Us"
+          },
+          "event_handlers": {
+            "view": [
+              {
+                "action": "track",
+                "event": "Entry Point Viewed",
+                "properties": {
+                  "Source": "Side Menu",
+                  "Type": "About Us"
+                }
+              }
+            ],
+            "click": [
+              {
+                "action": "navigate",
+                "url": "https://www.okcredit.in"
+              },
+              {
+                "action": "track",
+                "event": "View About",
+                "properties": {
+                  "Screen": "Drawer"
+                }
+              }
+            ]
+          },
+          "title": "About Us",
+          "icon": "https://storage.googleapis.com/prod__dynamicui__public__dataset/icons/ic_info_outline%404x.webp"
+        },
+        {
+          "version": "v1alpha",
+          "kind": "menu_item",
+          "metadata": {
+            "Name": "Privacy Policy"
+          },
+          "event_handlers": {
+            "view": [
+              {
+                "action": "track",
+                "event": "Entry Point Viewed",
+                "properties": {
+                  "Source": "Side Menu",
+                  "Type": "Privacy Policy"
+                }
+              }
+            ],
+            "click": [
+              {
+                "action": "navigate",
+                "url": "https://okcredit.app/merchant/v1/privacy"
+              },
+              {
+                "action": "track",
+                "event": "View Privacy",
+                "properties": {
+                  "Screen": "Drawer"
+                }
+              }
+            ]
+          },
+          "title": "Privacy Policy",
+          "icon": "https://storage.googleapis.com/prod__dynamicui__public__dataset/icons/ic_lock_outline%404x.webp"
+        }
+      ]
+    }
+  },
+  {
+    "target": "home_side_navigation",
+    "component": {
+      "version": "v1alpha",
+      "kind": "vertical_list",
+      "metadata": {
+        "name": "VerticalList",
+        "debug": true,
+        "lang": "en"
+      },
+      "items": [
+        {
+          "version": "v1alpha",
+          "kind": "menu_item",
+          "metadata": {
+            "Name": "Share"
+          },
+          "event_handlers": {
+            "view": [
+              {
+                "action": "track",
+                "event": "Entry Point Viewed",
+                "properties": {
+                  "Source": "Side Menu",
+                  "Type": "Share"
+                }
+              }
+            ],
+            "click": [
+              {
+                "action": "navigate",
+                "url": "https://okcredit.app/merchant/v1/share"
+              },
+              {
+                "action": "track",
+                "event": "Share App",
+                "properties": {
+                  "Screen": "Drawer"
+                }
+              }
+            ]
+          },
+          "title": "Share",
+          "icon": "https://storage.googleapis.com/prod__dynamicui__public__dataset/icons/ic_share%404x.webp"
+        },
+        {
+          "version": "v1alpha",
+          "kind": "menu_item",
+          "metadata": {
+            "Name": "Help"
+          },
+          "event_handlers": {
+            "view": [
+              {
+                "action": "track",
+                "event": "Entry Point Viewed",
+                "properties": {
+                  "Source": "Side Menu",
+                  "Type": "Help"
+                }
+              }
+            ],
+            "click": [
+              {
+                "action": "navigate",
+                "url": "https://okcredit.app/merchant/v1/helpv2"
+              },
+              {
+                "action": "track",
+                "event": "View Help",
+                "properties": {
+                  "Screen": "Drawer"
+                }
+              }
+            ]
+          },
+          "title": "Help",
+          "icon": "https://storage.googleapis.com/prod__dynamicui__public__dataset/icons/ic_help_outline%404x.webp"
+        },
+        {
+          "version": "v1alpha",
+          "kind": "menu_item",
+          "metadata": {
+            "Name": "About Us"
+          },
+          "event_handlers": {
+            "view": [
+              {
+                "action": "track",
+                "event": "Entry Point Viewed",
+                "properties": {
+                  "Source": "Side Menu",
+                  "Type": "About Us"
+                }
+              }
+            ],
+            "click": [
+              {
+                "action": "navigate",
+                "url": "https://www.okcredit.in"
+              },
+              {
+                "action": "track",
+                "event": "View About",
+                "properties": {
+                  "Screen": "Drawer"
+                }
+              }
+            ]
+          },
+          "title": "About Us",
+          "icon": "https://storage.googleapis.com/prod__dynamicui__public__dataset/icons/ic_info_outline%404x.webp"
+        },
+        {
+          "version": "v1alpha",
+          "kind": "menu_item",
+          "metadata": {
+            "Name": "Privacy Policy"
+          },
+          "event_handlers": {
+            "view": [
+              {
+                "action": "track",
+                "event": "Entry Point Viewed",
+                "properties": {
+                  "Source": "Side Menu",
+                  "Type": "Privacy Policy"
+                }
+              }
+            ],
+            "click": [
+              {
+                "action": "navigate",
+                "url": "https://okcredit.app/merchant/v1/privacy"
+              },
+              {
+                "action": "track",
+                "event": "View Privacy",
+                "properties": {
+                  "Screen": "Drawer"
+                }
+              }
+            ]
+          },
+          "title": "Privacy Policy",
+          "icon": "https://storage.googleapis.com/prod__dynamicui__public__dataset/icons/ic_lock_outline%404x.webp"
+        }
+      ]
+    }
+  },
+  {
+    "target": "dashboard",
+    "component": {
+      "version": "v1alpha",
+      "kind": "vertical_list",
+      "metadata": {
+        "name": "VerticalList",
+        "lang": "en"
+      },
+      "items": [
+        {
+          "version": "v1alpha",
+          "kind": "summary_card",
+          "metadata": {
+            "name": "net_balance",
+            "lang": "en"
+          },
+          "event_handlers": {
+            "click": [
+              {
+                "action": "navigate",
+                "url": "https://okcredit.app/merchant/v1/account_statement?duration=30"
+              }
+            ]
+          },
+          "title": "Ledger",
+          "subtitle": "Net Balance",
+          "icon": "https://storage.googleapis.com/prod__dynamicui__public__dataset/icons/ledger/drawable-xxxhdpi/icon_ledger_book.png"
+        },
+        {
+          "version": "v1alpha",
+          "kind": "advertisement",
+          "metadata": {
+            "name": "Setup Collection",
+            "lang": "en"
+          },
+          "event_handlers": {
+            "click": [
+              {
+                "action": "navigate",
+                "url": "https://okcredit.app/merchant/v1/account/collections/merchant_collection_screen?source=dashboard"
+              }
+            ]
+          },
+          "title": "Setup online collections & collect online money.",
+          "subtitle": "Over 22 Lakh trusted merchants use OkCredit.",
+          "icon": "",
+          "button_text": "Get Started",
+          "image": "https://storage.googleapis.com/prod__dynamicui__public__dataset/icons/setup/drawable-xxxhdpi/kyc_illustration.png"
+        }
+      ]
+    }
+  }
+  ]

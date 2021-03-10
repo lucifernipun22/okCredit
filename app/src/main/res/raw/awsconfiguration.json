@@ -1,0 +1,20 @@
+{
+  "Version": "1.0",
+  "IdentityManager": {
+    "Default": {}
+  },
+  "CredentialsProvider": {
+    "CognitoIdentity": {
+      "Default": {
+        "PoolId": "ap-south-1:222de95a-da6c-4190-9403-868f9dca4f40",
+        "Region": "ap-south-1"
+      }
+    }
+  },
+  "S3TransferUtility": {
+    "Default": {
+      "Bucket": "temp-okcredit-aug272019",
+      "Region": "ap-south-1"
+    }
+  }
+}
