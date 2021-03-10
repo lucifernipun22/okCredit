@@ -46,105 +46,136 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/languageEnglish"
-            android:layout_width="190dp"
-            android:layout_height="90dp"
-            android:layout_margin="@dimen/dp_8"
-            android:background="@drawable/english" />
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alignmentMode="alignMargins"
+            android:columnCount="1"
+            android:rowCount="5"
+            android:columnOrderPreserved="false"
+           >
 
-        <ImageView
-            android:id="@+id/languageHindi"
-            android:layout_width="190dp"
-            android:layout_height="90dp"
-            android:layout_margin="@dimen/dp_8"
-            android:background="@drawable/hindi" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    </LinearLayout>
+                <ImageView
+                    android:scaleType="centerCrop"
+                    android:id="@+id/languageEnglish"
+                    android:layout_width="170dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="@dimen/dp_8"
+                    android:background="@drawable/english" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="190dp"
-            android:layout_height="90dp"
-            android:layout_margin="@dimen/dp_8"
-            android:background="@drawable/marathi" />
+                <ImageView
+                    android:scaleType="centerCrop"
+                    android:id="@+id/languageHindi"
+                    android:layout_width="165dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="@dimen/dp_8"
+                    android:background="@drawable/hindi" />
 
-        <ImageView
-            android:layout_width="190dp"
-            android:layout_height="90dp"
-            android:layout_margin="@dimen/dp_8"
-            android:background="@drawable/hinglish" />
-    </LinearLayout>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="190dp"
-            android:layout_height="90dp"
-            android:layout_margin="@dimen/dp_8"
-            android:background="@drawable/gujrati" />
+                <ImageView
+                    android:scaleType="centerCrop"
+                    android:layout_width="170dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="@dimen/dp_8"
+                    android:background="@drawable/marathi" />
 
-        <ImageView
-            android:layout_width="190dp"
-            android:layout_height="93dp"
-            android:layout_marginLeft="@dimen/dp_8"
-            android:layout_marginTop="@dimen/dp_6"
-            android:background="@drawable/tamil" />
-    </LinearLayout>
+                <ImageView
+                    android:scaleType="centerCrop"
+                    android:layout_width="165dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="@dimen/dp_8"
+                    android:background="@drawable/hinglish" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="190dp"
-            android:layout_height="90dp"
-            android:layout_margin="@dimen/dp_8"
-            android:background="@drawable/telgu" />
+                <ImageView
+                    android:scaleType="centerCrop"
+                    android:layout_width="170dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="@dimen/dp_8"
+                    android:background="@drawable/gujrati" />
 
-        <ImageView
-            android:layout_width="190dp"
-            android:layout_height="93dp"
-            android:layout_margin="@dimen/dp_8"
-            android:background="@drawable/punjabi" />
-    </LinearLayout>
+                <ImageView
+                    android:scaleType="centerCrop"
+                    android:layout_width="165dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="@dimen/dp_8"
+                    android:background="@drawable/tamil" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="190dp"
-            android:layout_height="90dp"
-            android:layout_margin="@dimen/dp_8"
-            android:background="@drawable/kannada" />
+                <ImageView
+                    android:scaleType="centerCrop"
+                    android:layout_width="170dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="@dimen/dp_8"
+                    android:background="@drawable/telgu" />
 
-        <ImageView
-            android:layout_width="190dp"
-            android:layout_height="93dp"
-            android:layout_margin="@dimen/dp_8"
-            android:background="@drawable/malayalam" />
-    </LinearLayout>
+                <ImageView
+                    android:scaleType="centerCrop"
+                    android:layout_width="165dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="@dimen/dp_8"
+                    android:background="@drawable/punjabi" />
 
-    <Button
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:scaleType="centerCrop"
+                    android:layout_width="170dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="@dimen/dp_8"
+                    android:background="@drawable/kannada" />
+
+                <ImageView
+                    android:scaleType="centerCrop"
+                    android:layout_width="165dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="@dimen/dp_8"
+                    android:background="@drawable/malayalam" />
+
+            </LinearLayout>
+
+        </GridLayout>
+    </RelativeLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_20"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_20"
         android:background="@drawable/round_rectangle"
         android:drawableEnd="@drawable/ic_right_arrow"
         android:gravity="center|start"
@@ -152,5 +183,6 @@
         android:paddingRight="@dimen/dp_20"
         android:text="@string/next"
         android:textColor="@color/white" />
+
 
 </LinearLayout>

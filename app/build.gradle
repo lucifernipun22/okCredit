@@ -88,4 +88,11 @@ dependencies {
     implementation 'com.airbnb.android:lottie:3.6.1'
     //imageslider
     implementation 'com.github.denzcoskun:ImageSlideshow:0.0.6'
+
+    //rxJava2
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.14'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    //dexter
+    implementation 'com.karumi:dexter:4.2.0'
 }

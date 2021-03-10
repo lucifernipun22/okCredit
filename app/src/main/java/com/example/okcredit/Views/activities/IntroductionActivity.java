@@ -100,9 +100,9 @@ public class IntroductionActivity extends AppCompatActivity {
 
                 }
 
-                if (position == mList.size()-1) { // when we rech to the last screen
+                if (position == mList.size()-1) { // when we reach to the last screen
 
-                    // TODO : show the GETSTARTED Button and hide the indicator and the next button
+
 
                     loaddLastScreen();
 
@@ -114,7 +114,7 @@ public class IntroductionActivity extends AppCompatActivity {
             }
         });
 
-        // tablayout add change listener
+        // tabLayout add change listener
 
 
         tabIndicator.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
