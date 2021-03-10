@@ -1,7 +1,23 @@
 <resources>
     <string name="app_name">okCredit</string>
     <string name="okcredit">OkCredit</string>
+    <string name="language">Language</string>
+    <string name="by_continuing_you_agree_to_our">By continuing you agree to our </string>
+    <string name="terms_and_service"><u>Terms and service </u></string>
+    <string name="and">and </string>
     <string name="next">NEXT</string>
-    <string name="select_your_language">Select your Language</string>
+    <string name="privacy_policy"><u>Privacy policy </u></string>
+    <string name="my_hint">Mobile Number</string>
+    <string name="icon_of_the_okcredit">icon of the okCredit</string>
+    <string name="todo">TODO</string>
+    <string name="enter_your_mobile_number">Enter Your Mobile Number</string>
     <string name="welcome">Welcome</string>
+    <string name="select_your_language">Select your Language</string>
+    <string name="your_otp_will_be_delivered_soon_on">Your OTP will be delivered soon on</string>
+    <string name="edit_mobile">Edit Mobile</string>
+    <string name="skip">Skip</string>
+    <string name="enter_your_business_name">Enter Your Business"\n"Name</string>
+    <string name="business_name">Business Name</string>
+    <string name="your_name_will_be_displayed_on_any_transactional">Your name will be displayed on any transactional SMS delivered to your customer</string>
+    <string name="please_be_patience">Please be patience</string>
 </resources>
