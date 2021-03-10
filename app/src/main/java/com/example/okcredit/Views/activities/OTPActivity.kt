@@ -29,18 +29,18 @@ class OTPActivity : AppCompatActivity() {
             tvOtp5th.text = "0"
             tvOtp6th.text = "0"
 
-        }, 5000)
+        }, 3000)
 
         Handler().postDelayed({
 
-            val intent = Intent(this, BusinessNameActivity::class.java)
+            val intent = Intent(this, OTPVerfityActivity::class.java)
             startActivity(intent)
 
-        }, 6000)
+        }, 5000)
 
     }
 
     private fun setData() {
-//        tvMobileNumberOTP.text = SharedPref.readStringData(Const.MOBILE_NUMBER_KEY)
+        tvMobileNumberOTP.text = SharedPref.readStringData(Const.MOBILE_NUMBER_KEY)
     }
 }

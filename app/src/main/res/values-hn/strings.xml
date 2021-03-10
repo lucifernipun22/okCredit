@@ -29,4 +29,7 @@
     <string name="add_customer">Add Customer</string>
     <string name="Rs">\u20B9</string>
     <string name="search_add">Search or Add</string>
+    <string name="contacts">Contacts</string>
+    <string name="import_phone_contact">Import Phone Contact</string>
+    <string name="add_new_suppliers_directly_from">Add new suppliers directly from"\n"phonebook</string>
 </resources>

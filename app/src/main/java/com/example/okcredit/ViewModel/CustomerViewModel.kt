@@ -11,7 +11,11 @@ class CustomerViewModel(val repository: OkCreditRepo) : ViewModel() {
         repository.addNewCustomer(customerEntity)
     }
 
-    fun getCustomerList():LiveData<List<CustomerEntity>> {
+    fun getCustomerList(): LiveData<List<CustomerEntity>> {
         return repository.getCustomerList()
+    }
+
+    fun customerDetails(name: String): LiveData<List<CustomerEntity>> {
+        return repository.getCustomer(name)
     }
 }

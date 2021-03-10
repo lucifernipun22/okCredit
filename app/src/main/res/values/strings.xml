@@ -25,4 +25,7 @@
     <string name="business_name">Business Name</string>
     <string name="your_name_will_be_displayed_on_any_transactional">Your name will be displayed on any transactional SMS delivered to your customer</string>
     <string name="please_be_patience">Please be patience</string>
+    <string name="contacts">Contacts</string>
+    <string name="import_phone_contact">Import Phone Contact</string>
+    <string name="add_new_suppliers_directly_from">Add new suppliers directly from"\n"phonebook</string>
 </resources>
