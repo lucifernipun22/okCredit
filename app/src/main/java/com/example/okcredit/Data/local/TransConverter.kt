@@ -1,7 +1,7 @@
 package com.sajorahasan.okcredit.room.converter
 
 import androidx.room.TypeConverter
-import com.example.okcredit.Views.values.Transaction
+import com.example.okcredit.Data.local.Transaction
 import com.google.gson.Gson
 
 

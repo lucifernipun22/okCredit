@@ -61,4 +61,7 @@
     <string name="amount">   Amount</string>
     <string name="latest">   Latest</string>
     <string name="downloading_your_data">Downloading your Data</string>
+    <string name="balance">Balance</string>
+    <string name="send">send</string>
+    <string name="txn_add_credit_btn">Give\nCredit</string>
 </resources>

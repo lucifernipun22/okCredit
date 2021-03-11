@@ -15,6 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.okcredit.Adapter.IntroViewPagerAdapter;
 import com.example.okcredit.R;
+import com.example.okcredit.Views.values.Prefs;
 import com.example.okcredit.Views.values.ScreenItem;
 import com.google.android.material.tabs.TabLayout;
 
@@ -169,6 +170,7 @@ public class IntroductionActivity extends AppCompatActivity {
 
     }
 
+
     private boolean restorePrefData() {
 
 
@@ -204,4 +206,5 @@ public class IntroductionActivity extends AppCompatActivity {
 
 
     }
+
 }

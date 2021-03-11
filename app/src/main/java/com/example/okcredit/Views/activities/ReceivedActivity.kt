@@ -1,50 +1,32 @@
 package com.example.okcredit.Views.activities
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.ActivityManager
 import android.app.DatePickerDialog
-import android.app.Dialog
-import android.content.ContentResolver
-import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
-import android.os.StrictMode
-import android.provider.MediaStore
-import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.*
-import android.webkit.MimeTypeMap
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.okcredit.Data.local.Transaction
 import com.example.okcredit.R
 import com.example.okcredit.Views.values.*
-import com.karumi.dexter.Dexter
-import com.karumi.dexter.MultiplePermissionsReport
-import com.karumi.dexter.PermissionToken
-import com.karumi.dexter.listener.PermissionRequest
-import com.karumi.dexter.listener.multi.MultiplePermissionsListener
-import com.sajorahasan.okcredit.model.Customer
+import com.example.okcredit.Data.local.Customer
+import com.example.okcredit.ViewModel.CustomerViewModel
+import com.example.okcredit.ViewModel.CustomerViewModelFactory
 import com.san.app.activity.BaseActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_received.*
 import okhttp3.ResponseBody
-import java.io.File
-import java.io.IOException
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
@@ -76,6 +58,17 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
         initViews()
 
         setCustomerData()
+        val appClass = application as OkCreditApplication
+
+        val repository = appClass.repository
+        val viewModelFactory = CustomerViewModelFactory(repository)
+
+        val viewModel = ViewModelProviders.of(this, viewModelFactory)
+            .get(CustomerViewModel::class.java)
+        val list = mutableListOf<Transaction>()
+        var customerEntity =
+            Transaction("1","2","2","2","2","1")
+        viewModel.addTransaction(customerEntity)
 
     }
 
@@ -85,7 +78,7 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
         type = intent.getStringExtra("type")
         Log.d(tag, "customer===> $customer")
 
-        // toolbar.setNavigationOnClickListener { onBackPressed() }
+         toolbar.setNavigationOnClickListener { onBackPressed() }
 
         disposable = CompositeDisposable()
         api = RestAdapter.getInstance()
@@ -196,7 +189,7 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
         setResult(Activity.RESULT_OK, intent)
         onBackPressed()
 
-//        createTransact()
+      // createTransact()
     }
 
     private fun createTransact() {

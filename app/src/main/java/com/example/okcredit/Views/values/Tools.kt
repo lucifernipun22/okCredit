@@ -55,7 +55,7 @@ object Tools {
     }
 
     fun getCurrency(value: String): String {
-        return "Rp" + NumberFormat.getInstance().format(abs(value.toDouble())).toString()
+        return "₹ " + NumberFormat.getInstance().format(abs(value.toDouble())).toString()
     }
 
 }

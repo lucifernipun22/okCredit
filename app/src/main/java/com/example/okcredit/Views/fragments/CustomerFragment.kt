@@ -1,6 +1,8 @@
 package com.example.okcredit.Views.fragments
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.okcredit.Data.local.Customer
 import com.example.okcredit.Data.local.CustomerEntity
+import com.example.okcredit.Data.local.User
 import com.example.okcredit.R
 import com.example.okcredit.ViewModel.CustomerViewModel
 import com.example.okcredit.ViewModel.CustomerViewModelFactory
+import com.example.okcredit.Views.activities.CustomerTransactionActivity
 import com.example.okcredit.Views.values.OkCreditApplication
 import com.example.okcredit.Views.adapters.CustomerAdapter
 import com.example.okcredit.Views.interfaces.OnRowItemClicked
@@ -19,7 +24,7 @@ import kotlinx.android.synthetic.main.fragment_customer.*
 
 
 class CustomerFragment : Fragment(), OnRowItemClicked {
-    var customerList = mutableListOf<CustomerEntity>()
+    var customerList = mutableListOf<Customer>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,7 +54,7 @@ class CustomerFragment : Fragment(), OnRowItemClicked {
 
         viewModel.getCustomerList().observe(this, Observer {
             if (it != null)
-                customerList = it as MutableList<CustomerEntity>
+                customerList = it as MutableList<Customer>
             val linearLayoutManager = LinearLayoutManager(context)
             rv_customerItems.setLayoutManager(linearLayoutManager)
             val customerAdapter = CustomerAdapter(customerList, this)
@@ -63,4 +68,20 @@ class CustomerFragment : Fragment(), OnRowItemClicked {
             return CustomerFragment()
         }
     }
+
+    override fun onItemClick(model: Customer) {
+        gotoCustomerScreen(model)
+
+    }
+
+    private fun gotoCustomerScreen( model: Customer) {
+        //  Tools.hideKeyboard(view)
+            val intent = Intent(activity, CustomerTransactionActivity::class.java)
+
+            intent.putExtra("customer", model)
+            startActivity(intent)
+
+
+    }
+
 }

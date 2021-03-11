@@ -1,11 +1,12 @@
 package com.example.okcredit.Data.local
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
+import com.sajorahasan.okcredit.room.converter.CustomerConverter
+import com.sajorahasan.okcredit.room.converter.TransConverter
 
-@Database(entities = [CustomerEntity::class], version = 1)
+@Database(entities = [CustomerEntity::class,Customer::class,Transaction::class,User::class], version = 1,exportSchema = false)
+@TypeConverters(value = [CustomerConverter::class, TransConverter::class])
 abstract class OkCreditDatabase : RoomDatabase() {
 
     abstract fun getOkCreditDao(): OkCreditDAO

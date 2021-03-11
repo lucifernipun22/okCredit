@@ -2,7 +2,7 @@ package com.sajorahasan.okcredit.room.converter
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
-import com.sajorahasan.okcredit.model.Customer
+import com.example.okcredit.Data.local.Customer
 
 class CustomerConverter {
 
