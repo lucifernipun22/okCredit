@@ -12,7 +12,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.okcredit.R
 import com.example.okcredit.Views.values.Tools
-import com.example.okcredit.Views.values.Transaction
+import com.example.okcredit.Data.local.Transaction
 import com.google.android.material.card.MaterialCardView
 import kotlinx.android.synthetic.main.item_customer_transaction.view.*
 

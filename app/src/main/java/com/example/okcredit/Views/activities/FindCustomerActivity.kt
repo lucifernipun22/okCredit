@@ -5,10 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.okcredit.Data.local.Customer
 import com.example.okcredit.Data.local.CustomerEntity
+import com.example.okcredit.Data.local.User
 import com.example.okcredit.R
 import com.example.okcredit.ViewModel.CustomerViewModel
 import com.example.okcredit.ViewModel.CustomerViewModelFactory
@@ -20,10 +24,10 @@ import kotlinx.android.synthetic.main.activity_find_customer.*
 
 class FindCustomerActivity : AppCompatActivity(), OnRowItemClicked {
 
-    var customerList = mutableListOf<CustomerEntity>()
+    var customerList = mutableListOf<Customer>()
     lateinit var customerViewModel: CustomerViewModel
     lateinit var customerAdapter: CustomerAdapter
-
+    private lateinit var user: User
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_find_customer)
@@ -87,4 +91,9 @@ class FindCustomerActivity : AppCompatActivity(), OnRowItemClicked {
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
     }
+
+    override fun onItemClick(model: Customer) {
+
+    }
+
 }

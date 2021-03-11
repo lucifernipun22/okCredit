@@ -22,9 +22,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OkCredit">
         <activity android:name=".Views.activities.AddCustomerActivity"></activity>
-        <activity android:name=".Views.activities.HomeActivity"/>
+        <activity android:name=".Views.activities.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Views.activities.TransactionActivity"></activity>
-        <activity android:name=".Views.activities.ReceivedActivity"></activity>
+        <activity android:name=".Views.activities.ReceivedActivity">
+        </activity>
         <activity android:name=".Views.activities.CustomerTransactionActivity"></activity>
         <activity android:name=".Views.activities.BusinessNameActivity" ></activity>
         <activity android:name=".Views.activities.OTPActivity" />
@@ -32,10 +38,7 @@
         <activity android:name=".Views.activities.IntroductionActivity" />
         <activity android:name=".Views.activities.LanguageSelect" />
         <activity android:name=".Views.activities.SplashScreen1">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".Views.activities.SplashScreen2" />
         <activity android:name=".Views.activities.SyncCloudDataActivity"></activity>

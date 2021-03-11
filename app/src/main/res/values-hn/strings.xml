@@ -15,7 +15,7 @@
     <string name="my_hint">Mobile Number</string>
     <string name="icon_of_the_okcredit">icon of the okCredit</string>
     <string name="todo">TODO</string>
-    <string name="enter_your_mobile_number">Enter Your Mobile Number</string>
+    <string name="enter_your_mobile_number">Number Dalo</string>
     <string name="welcome">स्वागत हे</string>
     <string name="select_your_language">अपनी भाषा का चयन करे</string>
     <string name="your_otp_will_be_delivered_soon_on">Your OTP will be delivered soon on</string>
@@ -66,5 +66,7 @@
     <string name="amount">Amount</string>
     <string name="latest">Latest</string>
     <string name="downloading_your_data">Downloading your Data</string>
-
+    <string name="balance">Balance</string>
+    <string name="send">send</string>
+    <string name="txn_add_credit_btn">Give\nCredit</string>
 </resources>

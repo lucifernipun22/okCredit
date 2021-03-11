@@ -3,40 +3,30 @@ package com.example.okcredit.Views.activities
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Settings
-import android.speech.RecognitionListener
-import android.speech.RecognizerIntent
-import android.speech.SpeechRecognizer
 import android.util.Log
-import android.view.MotionEvent
 import android.view.View
-import android.widget.EditText
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.okcredit.Data.local.RoomDb
 import com.example.okcredit.R
 import com.example.okcredit.Views.adapters.CustomerTransactionAdapter
 import com.example.okcredit.Views.values.Prefs
 import com.example.okcredit.Views.values.Tools
-import com.example.okcredit.Views.values.Transaction
-import com.sajorahasan.okcredit.model.Customer
-import com.sajorahasan.okcredit.model.User
+import com.example.okcredit.Data.local.Transaction
+import com.example.okcredit.Data.local.Customer
+import com.example.okcredit.Data.local.OkCreditDatabase
+import com.example.okcredit.Data.local.User
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_customer_transaction.*
+import kotlinx.android.synthetic.main.customer_item_layout.*
 import kotlinx.android.synthetic.main.layout_customer_trans_empty.*
 import java.text.NumberFormat
-import java.util.*
-import java.util.jar.Manifest
 import kotlin.math.abs
 
 class CustomerTransactionActivity : AppCompatActivity() , View.OnClickListener{
@@ -51,7 +41,7 @@ class CustomerTransactionActivity : AppCompatActivity() , View.OnClickListener{
     private lateinit var transactions: MutableList<Transaction>
     private lateinit var transactionAdapter: CustomerTransactionAdapter
 
-    private lateinit var db: RoomDb
+    private lateinit var db: OkCreditDatabase
     private var disposable: CompositeDisposable? = null
 
     private lateinit var customer: Customer
@@ -70,20 +60,20 @@ class CustomerTransactionActivity : AppCompatActivity() , View.OnClickListener{
 
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     private fun initViews() {
-        user = intent.getParcelableExtra("user")!!
-       // customer = intent.getParcelableExtra("customer")!!
-       // Log.d(tag, "customer===> $customer")
+        //user = intent.getParcelableExtra("user")!!
+        customer = intent.getParcelableExtra("customer")!!
+        Log.d(tag, "customer===> $customer")
 
-        //disposable = CompositeDisposable()
-        db = RoomDb.getDatabase(this)
+        disposable = CompositeDisposable()
+        db = OkCreditDatabase.getRoomDatabase(this)
 
         //cvCardView.setNavigationOnClickListener { onBackPressed() }
 
         initializeTransactionRecyclerView()
 
         call_btn.setOnClickListener(this)
-        accept.setOnClickListener(this)
-        give.setOnClickListener(this)
+        btnAcceptPayment.setOnClickListener(this)
+        btnGivePayment.setOnClickListener(this)
     }
 
     private fun initializeTransactionRecyclerView() {
@@ -106,7 +96,7 @@ class CustomerTransactionActivity : AppCompatActivity() , View.OnClickListener{
         if (transactions.isNullOrEmpty()) {
             rvTransactions.visibility = View.GONE
             totalAmtContainer.visibility = View.GONE
-            //bottomButtonContainer.visibility = View.GONE
+            bottomButtonContainer.visibility = View.GONE
             emptyLayout.visibility = View.VISIBLE
             tvEmptyList.text =
                 Tools.getSpannedText(getString(R.string.safe_secure_trans, customer.name))
@@ -114,7 +104,7 @@ class CustomerTransactionActivity : AppCompatActivity() , View.OnClickListener{
             emptyLayout.visibility = View.GONE
             rvTransactions.visibility = View.VISIBLE
             totalAmtContainer.visibility = View.VISIBLE
-            //bottomButtonContainer.visibility = View.VISIBLE
+           bottomButtonContainer.visibility = View.VISIBLE
         }
     }
 
@@ -141,14 +131,14 @@ class CustomerTransactionActivity : AppCompatActivity() , View.OnClickListener{
     private fun setCustomerData() {
         if (customer.profileImage !== null) {
             Glide.with(this)
-                .load(Uri.parse(customer.profileImage))
+                .load(R.drawable.ic_account_125dp)
                 .apply(RequestOptions.circleCropTransform())
-                .into(tv_name_Circle)
+                .into(ivProfile)
         } else {
             Glide.with(this)
                 .load(R.drawable.ic_account_125dp)
                 .apply(RequestOptions.circleCropTransform())
-                .into(tv_name_Circle)
+                .into(ivProfile)
         }
         tvName.text = customer.name
     }
@@ -165,10 +155,10 @@ class CustomerTransactionActivity : AppCompatActivity() , View.OnClickListener{
                 startActivity(phoneIntent)
             }
 
-            R.id.accept -> {
+            R.id.btnAcceptPayment -> {
                 gotoAddTransactionScreen("credit")
             }
-            R.id.give -> {
+            R.id.btnGivePayment -> {
                 gotoAddTransactionScreen("debit")
             }
         }
@@ -200,7 +190,7 @@ class CustomerTransactionActivity : AppCompatActivity() , View.OnClickListener{
 
     private fun getUserFromDb(): User {
         val phone = Prefs.getString("phone")
-        return db.userDao().getUser(phone!!)
+        return db.getOkCreditDao().getUser(phone!!)
     }
 
     private fun updateDb(): User {
@@ -211,7 +201,7 @@ class CustomerTransactionActivity : AppCompatActivity() , View.OnClickListener{
             transactions = customer.transactions
         }
         Log.d(tag, "Customer updated successfully inDb2 ${user.customers[0].balance}")
-        db.userDao().updateUser(user)
+        db.getOkCreditDao().updateUser(user)
         return getUserFromDb()
     }
 
@@ -244,7 +234,7 @@ class CustomerTransactionActivity : AppCompatActivity() , View.OnClickListener{
 
         Log.d(tag, "bal --- $bal  ---temp--- $temp")
 
-        tvTotalBalance.text = "Rp$temp"
+        tvTotalBalance.text = "₹ $temp"
         customer.balance = abs(bal).toString()
         if (bal >= 0.0) {
             tvTotalBalance.setTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark))

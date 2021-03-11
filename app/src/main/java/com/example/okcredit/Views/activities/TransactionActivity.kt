@@ -12,9 +12,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.okcredit.R
 import com.example.okcredit.Views.values.Tools
-import com.example.okcredit.Views.values.Transaction
+import com.example.okcredit.Data.local.Transaction
 import com.san.app.activity.BaseActivity
-import com.sajorahasan.okcredit.model.Customer
+import com.example.okcredit.Data.local.Customer
 import kotlinx.android.synthetic.main.activity_transaction.*
 
 
