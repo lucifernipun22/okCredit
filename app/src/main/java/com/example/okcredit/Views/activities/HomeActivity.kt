@@ -4,44 +4,52 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import android.view.View
+import android.widget.*
 import androidx.lifecycle.ViewModelProviders
+import com.example.okcredit.Data.local.Customer
 import com.example.okcredit.Data.local.OkCreditDAO
+import com.example.okcredit.Data.local.User
 import com.example.okcredit.R
 import com.example.okcredit.Repository.OkCreditRepo
 import com.example.okcredit.ViewModel.CustomerViewModel
 import com.example.okcredit.ViewModel.CustomerViewModelFactory
+import com.example.okcredit.Views.adapters.CustomerAdapter
 import com.example.okcredit.Views.adapters.ViewPagerFragmentAdapter
 import com.example.okcredit.Views.fragments.NewTodoItemEvent
 import com.example.okcredit.Views.interfaces.ComminicationListner
 import com.example.okcredit.Views.values.Const
+import com.example.okcredit.Views.interfaces.OnRowItemClicked
 import com.example.okcredit.Views.values.OkCreditApplication
 import com.example.okcredit.Views.values.SharedPref
+import com.example.okcredit.Views.values.Tools
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.san.app.activity.BaseActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
 import org.greenrobot.eventbus.EventBus
 import org.jetbrains.anko.toast
+import kotlinx.android.synthetic.main.customer_item_layout.view.*
 
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity(),OnRowItemClicked {
 
     lateinit var okCreditDao: OkCreditDAO
     lateinit var customerViewModel: CustomerViewModel
     lateinit var okCreditRepository: OkCreditRepo
     var radioButtonClick: Int? = null
 
+    private lateinit var customerList: MutableList<Customer>
+    private lateinit var customerAdapter: CustomerAdapter
     private lateinit var pagerAdapter: ViewPagerFragmentAdapter
+    private lateinit var user: User
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
         setViewPagerAdapter()
         initializations()
+
 
         btnAddCustomer.setOnClickListener {
             intent = Intent(this, AddCustomerActivity::class.java)
@@ -55,6 +63,12 @@ class HomeActivity : AppCompatActivity() {
         btnAddFilter.setOnClickListener {
             bottomSheetDialog()
         }
+        initViews()
+    }
+
+    private fun initViews() {
+        customerList = mutableListOf()
+
     }
 
     private fun bottomSheetDialog() {
@@ -85,6 +99,7 @@ class HomeActivity : AppCompatActivity() {
                     mradionAmount.isChecked = true
                 }
             }
+
             if (mradionName != null) {
                 if (mradionName.isChecked) {
                     mradionName.isChecked = false
@@ -119,6 +134,19 @@ class HomeActivity : AppCompatActivity() {
             }
         }
     }
+    /*private fun initializeCustomerRecyclerView() {
+        customerAdapter = CustomerAdapter(customerList, this)
+        customerAdapter.setOnItemClickListener(object :
+            CustomerAdapter.OnItemClickListener {
+            override fun onItemClick(view: View, position: Int) {
+                val c = customerList[position]
+                Log.d("Home", "onItemClick pos $position name $c")
+                gotoCustomerScreen(view, c)
+            }
+        })
+
+    }*/
+
 
     private fun startActivity() {
         val intent = Intent(this, FindCustomerActivity::class.java)
@@ -134,10 +162,19 @@ class HomeActivity : AppCompatActivity() {
             ViewModelProviders.of(this, viewModelFactory).get(CustomerViewModel::class.java)
     }
 
+
+
+
     private fun setViewPagerAdapter() {
         pagerAdapter = ViewPagerFragmentAdapter(supportFragmentManager)
         home_viewPager.setAdapter(pagerAdapter)
         tabLayout.setupWithViewPager(home_viewPager)
     }
+
+    override fun onItemClick(model: Customer) {
+
+    }
+
+
 
 }

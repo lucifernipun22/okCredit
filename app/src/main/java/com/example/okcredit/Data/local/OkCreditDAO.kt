@@ -1,25 +1,43 @@
 package com.example.okcredit.Data.local
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import com.example.okcredit.Data.local.CustomerEntity
+import androidx.room.*
 
 @Dao
 interface OkCreditDAO {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addNewCustomer(customerEntity: CustomerEntity)
+    suspend fun addNewCustomer(customerEntity: Customer)
 
     @Query("select * from customer ")
-    fun getCustomersList(): LiveData<List<CustomerEntity>>
+    fun getCustomersList(): LiveData<List<Customer>>
 
     @Query("select * from customer where name=:newName")
-    fun getCustomer(newName: String): LiveData<List<CustomerEntity>>
+    fun getCustomer(newName: String): LiveData<List<Customer>>
 
-//    @Query("update customer SET title=:newTitle, type =:newType, amount=:newAmount where id=:newid")
-//    fun updateTable(newTitle: String, newType: String, newAmount: String, newid: Int)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun addTransaction(customerEntity: Transaction)
+
+    @Query("select * from `Transaction` ")
+    fun getTransactionList(): LiveData<List<Transaction>>
+
+    @Query("select * from `Transaction` where amount=:newName")
+    fun getTransaction(newName: String): LiveData<List<Transaction>>
+
+
+    @Query("SELECT * from User WHERE phone=:phone")
+    fun getUser(phone: String): User
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(user: User)
+
+    @Query("DELETE FROM User")
+    fun delete()
+
+    @Update
+    fun updateUser(user: User): Int
+
+    @Update
+    fun updateTrasction(customerEntity: Customer)
 
 }
