@@ -22,8 +22,7 @@ data class Transaction(
     var image: String? = "",
     @ColumnInfo(name = "updateAt")
     var updatedAt: String? = "",
-   /* @PrimaryKey
-    var id: String = UUID.randomUUID().toString()*/
+
 ) : Parcelable
 {
     @PrimaryKey(autoGenerate = true)

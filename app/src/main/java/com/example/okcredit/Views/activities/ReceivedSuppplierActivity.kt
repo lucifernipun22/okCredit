@@ -66,7 +66,7 @@ class ReceivedSuppplierActivity : BaseActivity(), View.OnClickListener {
 
     private var imageURI: String = ""
 
-    private var transact: Transaction? = null
+    private var transact: SupplierTransaction? = null
 
     private var api: RestAPI? = null
     private var disposable: CompositeDisposable? = null
@@ -140,7 +140,7 @@ class ReceivedSuppplierActivity : BaseActivity(), View.OnClickListener {
             tvHeaderAmount1.setTextColor(greenColor)
         }
 
-        tvHeaderAmount1.text = Tools.getCurrency(supplier!!.balance)
+        tvHeaderAmount1.text = Tools.getCurrency2(supplier!!.balance)
         tvDate1.text = SimpleDateFormat("dd MMM yyyy").format(Calendar.getInstance().time)
 
         if (type == "debit") {
@@ -200,7 +200,7 @@ class ReceivedSuppplierActivity : BaseActivity(), View.OnClickListener {
         }
         val note = etNote1.text.toString().trim()
 
-        transact = Transaction(
+        transact = SupplierTransaction(
             amount,
             type,
             Timestamp(System.currentTimeMillis()).toString(),

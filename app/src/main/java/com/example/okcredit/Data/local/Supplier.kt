@@ -18,7 +18,7 @@ data class Supplier(
     @ColumnInfo(name = "profile")
     var profileImage: String?="",
     @ColumnInfo(name = "transaction1")
-    var transactions: MutableList<Transaction> = mutableListOf(),
+    var transactions: MutableList<SupplierTransaction> = mutableListOf(),
     @ColumnInfo(name = "balance")
     var balance: String = "0",
     @ColumnInfo(name = "balanceType")

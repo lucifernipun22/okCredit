@@ -10,15 +10,17 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.okcredit.Data.local.SupplierTransaction
 import com.example.okcredit.Data.local.Transaction
 import com.example.okcredit.R
 import com.example.okcredit.Views.values.Tools
 import com.google.android.material.card.MaterialCardView
 import kotlinx.android.synthetic.main.item_customer_transaction.view.*
+import kotlinx.android.synthetic.main.item_supplier_transaction.view.*
 
 
 class SupplierTransactionAdapter(
-    private val transactions: MutableList<Transaction>,
+    private val transactions: MutableList<SupplierTransaction>,
     private val context: Context
 ) :
     RecyclerView.Adapter<SupplierTransactionAdapter.MyViewHolder>() {
@@ -26,13 +28,13 @@ class SupplierTransactionAdapter(
     private var mListener: OnItemClickListener? = null
 
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val cvContainer: MaterialCardView = view.cvContainer
-        val llBottomContainer: LinearLayout = view.llBottomContainer
-        val tvNote: TextView = view.tvNote
-        val tvAmount: TextView = view.tvAmount
-        val tvDate: TextView = view.tvDate
-        val tvTotalAmount: TextView = view.tvTotalAmount
-        val ivIcon: ImageView = view.ivIcon
+        val cvContainer: MaterialCardView = view.cvContainer1
+        val llBottomContainer: LinearLayout = view.llBottomContainer1
+        val tvNote: TextView = view.tvNote1
+        val tvAmount: TextView = view.tvAmount1
+        val tvDate: TextView = view.tvDate1
+        val tvTotalAmount: TextView = view.tvTotalAmount1
+        val ivIcon: ImageView = view.ivIcon1
 
     }
 
@@ -56,7 +58,7 @@ class SupplierTransactionAdapter(
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val t: Transaction = transactions[position]
+        val t: SupplierTransaction = transactions[position]
         val params = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.WRAP_CONTENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
@@ -76,7 +78,7 @@ class SupplierTransactionAdapter(
             holder.tvNote.visibility = View.VISIBLE
         }
 
-        val amt = Tools.getCurrency(t.amount!!)
+        val amt = Tools.getCurrency2(t.amount!!)
 
         holder.tvAmount.text = amt
 

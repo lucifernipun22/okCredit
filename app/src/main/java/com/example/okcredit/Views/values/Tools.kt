@@ -58,4 +58,8 @@ object Tools {
         return "₹ " + NumberFormat.getInstance().format(abs(value.toDouble())).toString()
     }
 
+    fun getCurrency2(value: String): String {
+        return "₹ " + NumberFormat.getInstance().format(abs(value.toDouble())).toString()
+    }
+
 }
