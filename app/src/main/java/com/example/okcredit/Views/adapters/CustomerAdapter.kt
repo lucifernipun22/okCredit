@@ -22,9 +22,9 @@ class CustomerAdapter(
     private val customer_list: MutableList<Customer>,
     var mlistner: OnRowItemClicked,
 
-) : RecyclerView.Adapter<CustomerAdapter.ClassViewHolder>() {
-   // private var mListener: O? = null
-   private lateinit var user: User
+    ) : RecyclerView.Adapter<CustomerAdapter.ClassViewHolder>() {
+    // private var mListener: O? = null
+    private lateinit var user: User
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClassViewHolder {
         val view =
@@ -32,18 +32,19 @@ class CustomerAdapter(
                 .inflate(R.layout.customer_item_layout, parent, false)
         return ClassViewHolder(view)
     }
+
     /*fun setOnItemClickListener(listener: OnRowItemClicked) {
         mlistner = listener
     }*/
-   /* interface OnItemClickListener {
-        fun onItemClick(view: View, position: Int)
-    }
-*/
+    /* interface OnItemClickListener {
+         fun onItemClick(view: View, position: Int)
+     }
+ */
     override fun onBindViewHolder(holder: ClassViewHolder, position: Int) {
-       val model = customer_list[position]
-        /*holder.view.tv_fullname.text = customer_list[position].name
-        holder.view.tv_name.text=customer_list[position].name?.first().toString()*/
-        holder.setData(model,mlistner)
+        val model = customer_list[position]
+//        holder.view.tv_fullname.text = customer_list[position].name
+        //    holder.view.tv_name.text = customer_list[position].name?.first().toString()
+        holder.setData(model, mlistner)
     }
 
     override fun getItemCount(): Int {
@@ -52,20 +53,17 @@ class CustomerAdapter(
 
     class ClassViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
-        fun setData(model: Customer,mlistner: OnRowItemClicked){
+        fun setData(model: Customer, mlistner: OnRowItemClicked) {
             view.apply {
                 tv_fullname.text = model.name
+                tv_name.text = model.name?.first().toString()
                 constraintLayout.setOnClickListener {
                     mlistner.onItemClick(model)
                 }
-
             }
-
 
         }
     }
-
-
 
 
 }

@@ -2,7 +2,6 @@ package com.example.okcredit.Data.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.okcredit.Data.local.CustomerEntity
 
 @Dao
 interface OkCreditDAO {
@@ -44,7 +43,6 @@ interface OkCreditDAO {
     fun getSupplier(newName: String): LiveData<List<Supplier>>
 
 
-
     @Query("SELECT * from User WHERE phone=:phone")
     fun getUser(phone: String): User
 
@@ -56,5 +54,8 @@ interface OkCreditDAO {
 
     @Update
     fun updateUser(user: User): Int
+
+    @Update
+    fun updateTrasction(customerEntity: Customer)
 
 }

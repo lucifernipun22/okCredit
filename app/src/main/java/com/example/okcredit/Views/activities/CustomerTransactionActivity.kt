@@ -38,7 +38,7 @@ import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import kotlin.math.abs
 
-class CustomerTransactionActivity : AppCompatActivity() , View.OnClickListener{
+class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
     companion object {
         const val tag: String = "CustomerActivity"
 
@@ -86,7 +86,7 @@ class CustomerTransactionActivity : AppCompatActivity() , View.OnClickListener{
 
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     private fun initViews() {
-       // user = intent.getParcelableExtra("user")!!
+        //user = intent.getParcelableExtra("user")!!
         customer = intent.getParcelableExtra("customer")!!
         Log.d(tag, "customer===> $customer")
 
@@ -130,7 +130,7 @@ class CustomerTransactionActivity : AppCompatActivity() , View.OnClickListener{
             emptyLayout.visibility = View.GONE
             rvTransactions.visibility = View.VISIBLE
             totalAmtContainer.visibility = View.VISIBLE
-           bottomButtonContainer.visibility = View.VISIBLE
+            bottomButtonContainer.visibility = View.VISIBLE
         }
     }
 
@@ -233,19 +233,19 @@ class CustomerTransactionActivity : AppCompatActivity() , View.OnClickListener{
 
     private fun updateCustomer() {
         calculateBalance()
+//        disposable!!.add(
+//            Single.create<User> { e -> e.onSuccess(updateDb()) }
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe({
+//                    user = it
+//                    initializeTransactionRecyclerView()
+//                    Log.d(tag, "Customer updated successfully $user")
+//                }) { handleError(it) }
+//        )
         CoroutineScope(Dispatchers.Main).launch {
             initializeTransactionRecyclerView()
         }
-        /*disposable!!.add(
-            Single.create<User> { e -> e.onSuccess(updateDb()) }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    user = it
-                    initializeTransactionRecyclerView()
-                    Log.d(tag, "Customer updated successfully $user")
-                }) { handleError(it) }
-        )*/
     }
 
     @SuppressLint("SetTextI18n")
