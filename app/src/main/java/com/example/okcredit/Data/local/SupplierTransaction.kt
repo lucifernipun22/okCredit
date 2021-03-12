@@ -9,7 +9,7 @@ import java.util.*
 
 @Parcelize
 @Entity
-data class Transaction(
+data class SupplierTransaction(
     @ColumnInfo(name = "amount")
     var amount: String?="",
     @ColumnInfo(name = "type")

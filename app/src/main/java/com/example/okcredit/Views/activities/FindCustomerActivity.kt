@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.okcredit.Data.local.Customer
 import com.example.okcredit.Data.local.CustomerEntity
+import com.example.okcredit.Data.local.Supplier
 import com.example.okcredit.Data.local.User
 import com.example.okcredit.R
 import com.example.okcredit.ViewModel.CustomerViewModel
@@ -93,6 +94,10 @@ class FindCustomerActivity : AppCompatActivity(), OnRowItemClicked {
     }
 
     override fun onItemClick(model: Customer) {
+
+    }
+
+    override fun onItem(model: Supplier) {
 
     }
 
