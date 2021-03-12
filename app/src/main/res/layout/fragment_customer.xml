@@ -1,17 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_margin="@dimen/dp_5"
     tools:context=".Views.fragments.CustomerFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_customerItems"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="@dimen/dp_5"
-        android:padding="@dimen/dp_5">
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:padding="@dimen/dp_5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </androidx.recyclerview.widget.RecyclerView>
-</FrameLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:elevation="@dimen/dp_10"
+        app:cardElevation="@dimen/dp_10"
+        app:cardCornerRadius="@dimen/dp_2"
+        android:layout_marginBottom="@dimen/dp_20">
+        <Button
+            android:id="@+id/btnAddCustomerfRA"
+            android:layout_width="wrap_content"
+            android:text="Add Customer"
+            android:layout_height="wrap_content" />
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

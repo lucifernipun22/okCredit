@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.okcredit.Data.local.Customer
 import com.example.okcredit.Data.local.CustomerEntity
+import com.example.okcredit.Data.local.Supplier
 import com.example.okcredit.Data.local.Transaction
 import com.example.okcredit.Repository.OkCreditRepo
 
@@ -32,4 +33,6 @@ class CustomerViewModel(val repository: OkCreditRepo) : ViewModel() {
     fun getTransaction(name: String): LiveData<List<Transaction>> {
         return repository.getTransaction(name)
     }
+
+
 }

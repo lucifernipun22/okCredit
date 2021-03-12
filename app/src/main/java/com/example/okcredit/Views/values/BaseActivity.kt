@@ -56,11 +56,7 @@ open class BaseActivity : AppCompatActivity() {
         context = this@BaseActivity
     }
 
-    /*@Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(MyContextWrapper.wrap(newBase,"en"));
 
-    }*/
     fun setCheckBoxPadding(checkBox: CheckBox?) {
         val scale = this.resources.displayMetrics.density
         checkBox!!.setPadding(
@@ -88,55 +84,7 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    /*fun changeFragment(targetFragment: Fragment) {
-        val mFragmentManager = supportFragmentManager
-        mFragmentManager.beginTransaction().replace(R.id.frameLayout, targetFragment, "fragment")
-            .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-            .commit()
 
-    }
-
-    fun changeFragment(targetFragment: Fragment, from: String) {
-        val bundle = Bundle()
-        bundle.putString("from", from)
-        targetFragment.arguments = bundle
-        val mFragmentManager = supportFragmentManager
-        mFragmentManager.beginTransaction().replace(R.id.frameLayout, targetFragment, "fragment")
-            .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-            .commit()
-
-    }*/
-    /* fun changeFragment_back(targetFragment: Fragment) {
-         val mFragmentManager = supportFragmentManager
-         mFragmentManager.beginTransaction().replace(R.id.frame, targetFragment, "fragment")
-             .addToBackStack(null)
-             .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-             .commit()
-
-     }
-
-
-
-
-     //for dasthboard frame
-     fun changeFragment_backDash(targetFragment: Fragment) {
-         val mFragmentManager = supportFragmentManager
-         mFragmentManager.beginTransaction().replace(R.id.frameDash, targetFragment, "fragment")
-             .addToBackStack(null)
-             .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-             .commit()
-
-     }
-
-     fun changeFragmentDash(targetFragment: Fragment) {
-         val mFragmentManager = supportFragmentManager
-         mFragmentManager.beginTransaction().replace(R.id.frameDash, targetFragment, "fragment")
-             .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-             .commit()
-
-     }*/
-
-    ///// Permission function
 
 
     fun dismissProgressDialog() {

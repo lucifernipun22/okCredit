@@ -1,9 +1,7 @@
 package com.example.okcredit.Repository
 
 import androidx.lifecycle.LiveData
-import com.example.okcredit.Data.local.Customer
-import com.example.okcredit.Data.local.OkCreditDAO
-import com.example.okcredit.Data.local.Transaction
+import com.example.okcredit.Data.local.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,5 +33,30 @@ class OkCreditRepo(val okCreditDAO: OkCreditDAO) {
     fun getTransaction(name: String): LiveData<List<Transaction>> {
         return okCreditDAO.getTransaction(name)
     }
+    fun addSupplierTransaction(customerEntity: SupplierTransaction) {
+        CoroutineScope(Dispatchers.IO).launch {
+            okCreditDAO.addSupplierTransaction(customerEntity)
+        }
+    }
 
+    fun getSupplierTransactionList(): LiveData<List<SupplierTransaction>> {
+        return okCreditDAO.getSupplierTransactionList()
+    }
+
+    fun getSupplierTransaction(name: String): LiveData<List<SupplierTransaction>> {
+        return okCreditDAO.getSupplierTransaction(name)
+    }
+    fun addSupplier(customerEntity: Supplier) {
+        CoroutineScope(Dispatchers.IO).launch {
+            okCreditDAO.addSupplier(customerEntity)
+        }
+    }
+
+    fun getSupplierList(): LiveData<List<Supplier>> {
+        return okCreditDAO.getSupplierList()
+    }
+
+    fun getSupplier(name: String): LiveData<List<Supplier>> {
+        return okCreditDAO.getSupplier(name)
+    }
 }

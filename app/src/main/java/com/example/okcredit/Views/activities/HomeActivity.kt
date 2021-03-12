@@ -9,6 +9,7 @@ import android.widget.*
 import androidx.lifecycle.ViewModelProviders
 import com.example.okcredit.Data.local.Customer
 import com.example.okcredit.Data.local.OkCreditDAO
+import com.example.okcredit.Data.local.Supplier
 import com.example.okcredit.Data.local.User
 import com.example.okcredit.R
 import com.example.okcredit.Repository.OkCreditRepo
@@ -42,10 +43,10 @@ class HomeActivity : BaseActivity(),OnRowItemClicked {
         initializations()
 
 
-        btnAddCustomer.setOnClickListener {
+        /*btnAddCustomer.setOnClickListener {
             intent = Intent(this, AddCustomerActivity::class.java)
             startActivity(intent)
-        }
+        }*/
 
         et_search.setOnClickListener {
             startActivity()
@@ -158,6 +159,10 @@ class HomeActivity : BaseActivity(),OnRowItemClicked {
     }
 
     override fun onItemClick(model: Customer) {
+
+    }
+
+    override fun onItem(model: Supplier) {
 
     }
 

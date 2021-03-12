@@ -21,30 +21,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OkCredit">
-        <activity android:name=".Views.activities.AddCustomerActivity"></activity>
+        <activity android:name=".Views.activities.AddSupplierActvity"></activity>
+        <activity android:name=".Views.activities.ReceivedSuppplierActivity" />
+        <activity android:name=".Views.activities.SupplierTransactionActivity" />
+        <activity android:name=".Views.activities.AddCustomerActivity" />
         <activity android:name=".Views.activities.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Views.activities.TransactionActivity"></activity>
-        <activity android:name=".Views.activities.ReceivedActivity">
-        </activity>
-        <activity android:name=".Views.activities.CustomerTransactionActivity"></activity>
-        <activity android:name=".Views.activities.BusinessNameActivity" ></activity>
+        <activity android:name=".Views.activities.TransactionActivity" />
+        <activity android:name=".Views.activities.ReceivedActivity" />
+        <activity android:name=".Views.activities.CustomerTransactionActivity" />
+        <activity android:name=".Views.activities.BusinessNameActivity" />
         <activity android:name=".Views.activities.OTPActivity" />
         <activity android:name=".Views.activities.MobileNumberActivity" />
         <activity android:name=".Views.activities.IntroductionActivity" />
         <activity android:name=".Views.activities.LanguageSelect" />
-        <activity android:name=".Views.activities.SplashScreen1">
+        <activity android:name=".Views.activities.SplashScreen1" >
 
         </activity>
         <activity android:name=".Views.activities.SplashScreen2" />
-        <activity android:name=".Views.activities.SyncCloudDataActivity"></activity>
-        <activity android:name=".Views.activities.FindCustomerActivity"></activity>
-        <activity android:name=".Views.activities.OTPVerfityActivity" ></activity>
-
+        <activity android:name=".Views.activities.SyncCloudDataActivity" />
+        <activity android:name=".Views.activities.FindCustomerActivity" />
+        <activity android:name=".Views.activities.OTPVerfityActivity" />
     </application>
 
 </manifest>

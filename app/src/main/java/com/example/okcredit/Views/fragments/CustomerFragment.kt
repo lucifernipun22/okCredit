@@ -12,20 +12,23 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.okcredit.Data.local.Customer
 import com.example.okcredit.Data.local.CustomerEntity
+import com.example.okcredit.Data.local.Supplier
 import com.example.okcredit.Data.local.User
 import com.example.okcredit.R
 import com.example.okcredit.ViewModel.CustomerViewModel
 import com.example.okcredit.ViewModel.CustomerViewModelFactory
+import com.example.okcredit.Views.activities.AddCustomerActivity
 import com.example.okcredit.Views.activities.CustomerTransactionActivity
 import com.example.okcredit.Views.values.OkCreditApplication
 import com.example.okcredit.Views.adapters.CustomerAdapter
 import com.example.okcredit.Views.interfaces.OnRowItemClicked
+import com.example.okcredit.Views.values.Tools
 import kotlinx.android.synthetic.main.fragment_customer.*
+import kotlinx.android.synthetic.main.fragment_customer.view.*
 
 
 class CustomerFragment : Fragment(), OnRowItemClicked {
     var customerList = mutableListOf<Customer>()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -61,6 +64,12 @@ class CustomerFragment : Fragment(), OnRowItemClicked {
             rv_customerItems.setAdapter(customerAdapter)
         })
 
+        view.btnAddCustomerfRA.setOnClickListener {
+
+            val intent = Intent(activity,AddCustomerActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     companion object {
@@ -74,12 +83,16 @@ class CustomerFragment : Fragment(), OnRowItemClicked {
 
     }
 
-    private fun gotoCustomerScreen( model: Customer) {
-        //  Tools.hideKeyboard(view)
-            val intent = Intent(activity, CustomerTransactionActivity::class.java)
+    override fun onItem(model: Supplier) {
 
-            intent.putExtra("customer", model)
-            startActivity(intent)
+    }
+
+    private fun gotoCustomerScreen(model: Customer) {
+       //  Tools.hideKeyboard(view)
+        val intent = Intent(activity, CustomerTransactionActivity::class.java)
+       // intent.putExtra("user", user)
+        intent.putExtra("customer", model)
+        startActivity(intent)
 
 
     }

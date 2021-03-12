@@ -5,8 +5,8 @@ import androidx.room.*
 import com.sajorahasan.okcredit.room.converter.CustomerConverter
 import com.sajorahasan.okcredit.room.converter.TransConverter
 
-@Database(entities = [CustomerEntity::class,Customer::class,Transaction::class,User::class], version = 1,exportSchema = false)
-@TypeConverters(value = [CustomerConverter::class, TransConverter::class])
+@Database(entities = [CustomerEntity::class,Customer::class,Transaction::class,User::class,Supplier::class,SupplierTransaction::class], version = 1,exportSchema = false)
+@TypeConverters(value = [CustomerConverter::class, TransConverter::class, SupplierConvertor::class, SupplierTransConvertor::class])
 abstract class OkCreditDatabase : RoomDatabase() {
 
     abstract fun getOkCreditDao(): OkCreditDAO

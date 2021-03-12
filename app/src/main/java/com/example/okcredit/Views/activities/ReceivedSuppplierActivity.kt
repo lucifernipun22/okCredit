@@ -5,37 +5,59 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.*
-import android.widget.*
+import android.view.View
+import android.widget.EditText
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.okcredit.Data.local.Customer
+import com.example.okcredit.Data.local.Supplier
+import com.example.okcredit.Data.local.SupplierTransaction
 import com.example.okcredit.Data.local.Transaction
 import com.example.okcredit.R
-import com.example.okcredit.Views.values.*
-import com.example.okcredit.Data.local.Customer
 import com.example.okcredit.ViewModel.CustomerViewModel
 import com.example.okcredit.ViewModel.CustomerViewModelFactory
+import com.example.okcredit.ViewModel.SupplierViewModel
+import com.example.okcredit.ViewModel.SupplierViewModelFactory
+import com.example.okcredit.Views.values.*
 import com.san.app.activity.BaseActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_received.*
+import kotlinx.android.synthetic.main.activity_received.btnAddPhoto
+import kotlinx.android.synthetic.main.activity_received.btnSubmit
+import kotlinx.android.synthetic.main.activity_received.dateContainer
+import kotlinx.android.synthetic.main.activity_received.etAmount
+import kotlinx.android.synthetic.main.activity_received.etNote
+import kotlinx.android.synthetic.main.activity_received.imageContainer
+import kotlinx.android.synthetic.main.activity_received.image_view
+import kotlinx.android.synthetic.main.activity_received.ivProfile
+import kotlinx.android.synthetic.main.activity_received.removeImg
+import kotlinx.android.synthetic.main.activity_received.toolbar
+import kotlinx.android.synthetic.main.activity_received.transactLoader
+import kotlinx.android.synthetic.main.activity_received.tvCurrencySymbol
+import kotlinx.android.synthetic.main.activity_received.tvDate
+import kotlinx.android.synthetic.main.activity_received.tvError
+import kotlinx.android.synthetic.main.activity_received.tvHeaderAmount
+import kotlinx.android.synthetic.main.activity_received.tvName
+import kotlinx.android.synthetic.main.activity_received_suppplier.*
 import okhttp3.ResponseBody
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
 
+class ReceivedSuppplierActivity : BaseActivity(), View.OnClickListener {
+    private var tag: String = "supplierActivity"
 
-class ReceivedActivity : BaseActivity(), View.OnClickListener {
-    private var tag: String = "CustomerActivity"
-
-    private var customer: Customer? = null
+    private var supplier: Supplier? = null
     private var type: String? = null
     private var isDataValid: Boolean = false
 
@@ -52,7 +74,7 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_received)
+        setContentView(R.layout.activity_received_suppplier)
 
         //Initialize views
         initViews()
@@ -61,28 +83,28 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
         val appClass = application as OkCreditApplication
 
         val repository = appClass.repository
-        val viewModelFactory = CustomerViewModelFactory(repository)
+        val viewModelFactory = SupplierViewModelFactory(repository)
 
         val viewModel = ViewModelProviders.of(this, viewModelFactory)
-            .get(CustomerViewModel::class.java)
+            .get(SupplierViewModel::class.java)
         val list = mutableListOf<Transaction>()
-        val amount = etAmount.text.toString()
-        val time = tvDate.text.toString()
-        val note = etNote.text.toString()
-        val photo = btnAddPhoto.textAlignment.toString()
+        val amount = etAmount1.text.toString()
+        val time = tvDate1.text.toString()
+        val note = etNote1.text.toString()
+        val photo = btnAddPhoto1.textAlignment.toString()
         var customerEntity =
-            Transaction(amount,type,time,note,photo,"1")
+            SupplierTransaction(amount,type,time,note,photo,time)
         viewModel.addTransaction(customerEntity)
 
     }
 
 
     private fun initViews() {
-        customer = intent.getParcelableExtra("customer")
+        supplier = intent.getParcelableExtra("customer")
         type = intent.getStringExtra("type")
-        Log.d(tag, "customer===> $customer")
+        Log.d(tag, "customer===> $supplier")
 
-         toolbar.setNavigationOnClickListener { onBackPressed() }
+        toolbar1.setNavigationOnClickListener { onBackPressed() }
 
         disposable = CompositeDisposable()
         api = RestAdapter.getInstance()
@@ -90,59 +112,59 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
         redColor = ContextCompat.getColor(this, R.color.red)
         greenColor = ContextCompat.getColor(this, R.color.colorPrimaryDark)
 
-        etAmount.afterTextChanged { onAmountTextChange(it) }
+        etAmount1.afterTextChanged { onAmountTextChange(it) }
 
-        dateContainer.setOnClickListener(this)
-        btnSubmit.setOnClickListener(this)
-        btnAddPhoto.setOnClickListener(this)
-        removeImg.setOnClickListener(this)
+        dateContainer1.setOnClickListener(this)
+        btnSubmit1.setOnClickListener(this)
+        btnAddPhoto1.setOnClickListener(this)
+        removeImg1.setOnClickListener(this)
     }
     @SuppressLint("SimpleDateFormat")
     private fun setCustomerData() {
-        if (customer?.profileImage !== null) {
+        if (supplier?.profileImage !== null) {
             Glide.with(this)
                 .load(R.drawable.ic_account_125dp)
                 .apply(RequestOptions.circleCropTransform())
-                .into(ivProfile)
+                .into(ivProfile1)
         } else {
             Glide.with(this)
                 .load(R.drawable.ic_account_125dp)
                 .apply(RequestOptions.circleCropTransform())
-                .into(ivProfile)
+                .into(ivProfile1)
         }
-        tvName.text = customer?.name
+        tvName1.text = supplier?.name
 
-        if (customer?.balanceType == getString(R.string.due)) {
-            tvHeaderAmount.setTextColor(redColor)
+        if (supplier?.balanceType == getString(R.string.due)) {
+            tvHeaderAmount1.setTextColor(redColor)
         } else {
-            tvHeaderAmount.setTextColor(greenColor)
+            tvHeaderAmount1.setTextColor(greenColor)
         }
 
-        tvHeaderAmount.text = Tools.getCurrency(customer!!.balance)
-        tvDate.text = SimpleDateFormat("dd MMM yyyy").format(Calendar.getInstance().time)
+        tvHeaderAmount1.text = Tools.getCurrency(supplier!!.balance)
+        tvDate1.text = SimpleDateFormat("dd MMM yyyy").format(Calendar.getInstance().time)
 
         if (type == "debit") {
-            etAmount.setTextColor(redColor)
-            tvCurrencySymbol.setTextColor(redColor)
+            etAmount1.setTextColor(redColor)
+            tvCurrencySymbol1.setTextColor(redColor)
         } else {
-            etAmount.setTextColor(greenColor)
-            tvCurrencySymbol.setTextColor(greenColor)
+            etAmount1.setTextColor(greenColor)
+            tvCurrencySymbol1.setTextColor(greenColor)
         }
     }
 
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.dateContainer -> {
+            R.id.dateContainer1 -> {
                 openCalender()
             }
-            R.id.btnAddPhoto -> {
+            R.id.btnAddPhoto1 -> {
                 requestStoragePermission()
             }
-            R.id.removeImg -> {
+            R.id.removeImg1 -> {
                 removeImage()
             }
-            R.id.btnSubmit -> {
+            R.id.btnSubmit1 -> {
                 addTransaction()
             }
         }
@@ -169,14 +191,14 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun addTransaction() {
-        val amount = etAmount.text.toString().trim()
+        val amount = etAmount1.text.toString().trim()
         if (amount.isEmpty()) {
             isDataValid = false
-            tvError.visibility = View.VISIBLE
-            tvError.text = getString(R.string.valid_amount)
+            tvError1.visibility = View.VISIBLE
+            tvError1.text = getString(R.string.valid_amount)
             return
         }
-        val note = etNote.text.toString().trim()
+        val note = etNote1.text.toString().trim()
 
         transact = Transaction(
             amount,
@@ -186,13 +208,13 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
             image = imageURI
         )
 
-        customer?.transactions?.add(transact!!)
+        supplier?.transactions?.add(transact!!)
         val intent = Intent().apply {
-            putExtra("addTransaction", customer)
+            putExtra("addTransaction", supplier)
         }
         setResult(Activity.RESULT_OK, intent)
         onBackPressed()
-       // createTransact()
+        // createTransact()
     }
 
     private fun createTransact() {
@@ -216,22 +238,22 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
 
     @SuppressLint("RestrictedApi")
     private fun showLoader() {
-        btnSubmit.visibility = View.GONE
-        transactLoader.visibility = View.VISIBLE
+        btnSubmit1.visibility = View.GONE
+        transactLoader1.visibility = View.VISIBLE
     }
 
     @SuppressLint("RestrictedApi")
     private fun hideLoader() {
-        transactLoader.visibility = View.GONE
-        btnSubmit.visibility = View.VISIBLE
+        transactLoader1.visibility = View.GONE
+        btnSubmit1.visibility = View.VISIBLE
 
     }
 
     private fun handleSuccess(data: ResponseBody) {
         Log.d(tag, "handleSuccess $data")
-        customer?.transactions?.add(transact!!)
+        supplier?.transactions?.add(transact!!)
         val intent = Intent().apply {
-            putExtra("addTransaction", customer)
+            putExtra("addTransaction", supplier)
         }
         setResult(Activity.RESULT_OK, intent)
         onBackPressed()
@@ -246,16 +268,16 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
 
     private fun onAmountTextChange(s: String) {
         if (s.isNotEmpty()) {
-            dateContainer.visibility = View.VISIBLE
+            dateContainer1.visibility = View.VISIBLE
         } else {
-            dateContainer.visibility = View.GONE
+            dateContainer1.visibility = View.GONE
         }
     }
 
 
     private fun removeImage() {
-        image_view.setImageDrawable(null)
-        imageContainer.visibility = View.GONE
+        image_view1.setImageDrawable(null)
+        imageContainer1.visibility = View.GONE
         imageURI = ""
     }
 
@@ -280,7 +302,7 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
         if (resultCode == RESULT_OK) {
             if (requestCode == REQUEST_CAMERA) run {
                 //for getting image from Camera
-                imageContainer.visibility = View.VISIBLE
+                imageContainer1.visibility = View.VISIBLE
                 Glide.with(this)
                     .load(Uri.parse(mCurrentPhotoPath).path)
                     .into(image_view)
@@ -296,7 +318,7 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
                             || type.toLowerCase().contains("png")
                             || type.toLowerCase().contains("jpeg")
                         ) {
-                            imageContainer.visibility = View.VISIBLE
+                            imageContainer1.visibility = View.VISIBLE
                             Glide.with(this)
                                 .load(uri)
                                 .into(image_view)
@@ -320,5 +342,3 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
         }
     }
 }
-
-
