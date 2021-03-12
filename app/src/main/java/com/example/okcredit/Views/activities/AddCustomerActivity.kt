@@ -7,6 +7,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProviders
 import com.example.okcredit.Data.local.Customer
 import com.example.okcredit.Data.local.CustomerEntity
+import com.example.okcredit.Data.local.Supplier
 import com.example.okcredit.Data.local.Transaction
 import com.example.okcredit.R
 import com.example.okcredit.ViewModel.CustomerViewModel
