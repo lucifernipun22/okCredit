@@ -13,6 +13,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +35,7 @@
             android:layout_margin="@dimen/dp_10"
             android:text="@string/okcredit"
             android:textColor="@color/okCredit"
-            android:textSize="@dimen/dp_50" />
+            android:textSize="@dimen/dp_40" />
 
     </LinearLayout>
 
@@ -55,13 +56,12 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="292dp"
+        android:layout_marginTop="@dimen/dp_5"
+        android:gravity="center"
         android:text="Trusted by 50,00,000+ Businesses"
         android:textColor="@color/black"
-        android:textSize="@dimen/dp_20"
+        android:textSize="@dimen/dp_18"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.595"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +74,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-
         android:background="@drawable/ic_security"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
@@ -87,7 +86,6 @@
         android:id="@+id/secured"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:text="SECURED"
         android:textSize="@dimen/dp_17"
         android:textStyle="bold"
