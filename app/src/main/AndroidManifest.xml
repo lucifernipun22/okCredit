@@ -1,21 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.okcredit">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
     <application
+        android:name=".Views.values.OkCreditApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OkCredit">
-        <activity android:name=".Views.MainActivity">
+        <activity android:name=".Views.activities.SupplierTransactionNextActivity"></activity>
+        <activity android:name=".Views.activities.AddSupplierActvity" />
+        <activity android:name=".Views.activities.ReceivedSuppplierActivity" />
+        <activity android:name=".Views.activities.SupplierTransactionActivity" />
+        <activity android:name=".Views.activities.AddCustomerActivity" />
+        <activity android:name=".Views.activities.HomeActivity">
+
+        </activity>
+        <activity android:name=".Views.activities.TransactionActivity" />
+        <activity android:name=".Views.activities.ReceivedActivity" />
+        <activity android:name=".Views.activities.CustomerTransactionActivity" />
+        <activity android:name=".Views.activities.BusinessNameActivity" />
+        <activity android:name=".Views.activities.OTPActivity" />
+        <activity android:name=".Views.activities.MobileNumberActivity" />
+        <activity android:name=".Views.activities.IntroductionActivity" />
+        <activity android:name=".Views.activities.LanguageSelect" />
+        <activity android:name=".Views.activities.SplashScreen1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Views.activities.SplashScreen2" />
+        <activity android:name=".Views.activities.SyncCloudDataActivity" />
+        <activity android:name=".Views.activities.FindCustomerActivity" />
+        <activity android:name=".Views.activities.OTPVerfityActivity" />
     </application>
 
 </manifest>
