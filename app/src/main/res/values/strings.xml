@@ -73,4 +73,10 @@
     <string name="given">Given</string>
     <string name="add_credit">Add Credit</string>
     <string name="search_or_add">Search or Add</string>
+    <string name="customer">Customer</string>
+    <string name="supplier">Supplier</string>
+    <string name="added_on_09_mar_2021">Added on </string>
+    <string name="add_from_contacts">To quickly add from contacts</string>
+    <string name="add_supplier">Add Supplier</string>
+
 </resources>

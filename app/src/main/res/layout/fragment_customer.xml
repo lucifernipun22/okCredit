@@ -23,23 +23,47 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardview1f"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="@dimen/dp_20"
-        android:elevation="@dimen/dp_10"
-        app:cardElevation="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:elevation="@dimen/dp_5"
         app:cardCornerRadius="@dimen/dp_2"
-        android:layout_marginBottom="@dimen/dp_20">
+        app:cardElevation="@dimen/dp_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
         <Button
             android:id="@+id/btnAddCustomerfRA"
-            android:layout_width="wrap_content"
-            android:text="Add Customer"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/ic_baseline_person_add_24"
+            android:text="@string/add_customer" />
     </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewCustomer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:elevation="@dimen/dp_5"
+        android:visibility="invisible"
+        app:cardCornerRadius="@dimen/dp_2"
+        app:cardElevation="@dimen/dp_2"
+        app:layout_constraintBottom_toTopOf="@+id/cardview1f"
+        android:layout_marginBottom="@dimen/dp_2"
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <Button
+            android:id="@+id/btnFilterfRa"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/filter"
+            android:drawableLeft="@drawable/ic_baseline_filter_list_24"
+            android:visibility="invisible" />
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

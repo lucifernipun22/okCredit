@@ -27,11 +27,7 @@
         <activity android:name=".Views.activities.SupplierTransactionActivity" />
         <activity android:name=".Views.activities.AddCustomerActivity" />
         <activity android:name=".Views.activities.HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Views.activities.TransactionActivity" />
         <activity android:name=".Views.activities.ReceivedActivity" />
@@ -42,7 +38,11 @@
         <activity android:name=".Views.activities.IntroductionActivity" />
         <activity android:name=".Views.activities.LanguageSelect" />
         <activity android:name=".Views.activities.SplashScreen1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".Views.activities.SplashScreen2" />
         <activity android:name=".Views.activities.SyncCloudDataActivity" />

@@ -2,11 +2,11 @@ package com.example.okcredit.Views.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.*
 import androidx.lifecycle.ViewModelProviders
+import com.bumptech.glide.load.engine.Resource
 import com.example.okcredit.Data.local.Customer
 import com.example.okcredit.Data.local.OkCreditDAO
 import com.example.okcredit.Data.local.Supplier
@@ -18,22 +18,20 @@ import com.example.okcredit.ViewModel.CustomerViewModelFactory
 import com.example.okcredit.Views.adapters.CustomerAdapter
 import com.example.okcredit.Views.adapters.ViewPagerFragmentAdapter
 import com.example.okcredit.Views.fragments.NewTodoItemEvent
-import com.example.okcredit.Views.interfaces.ComminicationListner
-import com.example.okcredit.Views.values.Const
 import com.example.okcredit.Views.interfaces.OnRowItemClicked
+import com.example.okcredit.Views.values.Const
 import com.example.okcredit.Views.values.OkCreditApplication
+import com.example.okcredit.Views.values.Prefs.getString
 import com.example.okcredit.Views.values.SharedPref
-import com.example.okcredit.Views.values.Tools
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.san.app.activity.BaseActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
-import org.greenrobot.eventbus.EventBus
-import org.jetbrains.anko.toast
 import kotlinx.android.synthetic.main.customer_item_layout.view.*
+import org.greenrobot.eventbus.EventBus
 
 
-class HomeActivity : BaseActivity(),OnRowItemClicked {
+class HomeActivity : BaseActivity(), OnRowItemClicked {
 
     lateinit var okCreditDao: OkCreditDAO
     lateinit var customerViewModel: CustomerViewModel
@@ -44,27 +42,29 @@ class HomeActivity : BaseActivity(),OnRowItemClicked {
     private lateinit var customerAdapter: CustomerAdapter
     private lateinit var pagerAdapter: ViewPagerFragmentAdapter
     private lateinit var user: User
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
         setViewPagerAdapter()
         initializations()
+        initViews()
 
-
-        /*btnAddCustomer.setOnClickListener {
-            intent = Intent(this, AddCustomerActivity::class.java)
-            startActivity(intent)
-        }*/
-
-        et_search.setOnClickListener {
+        etMaterialSearch.setOnClickListener {
             startActivity()
         }
 
-        btnAddFilter.setOnClickListener {
-            bottomSheetDialog()
-        }
-        initViews()
+//        btnAddCustomer.setOnClickListener {
+//            intent = Intent(this, AddCustomerActivity::class.java)
+//            startActivity(intent)
+//        }
+
+//        btnAddFilter.setOnClickListener {
+//            bottomSheetDialog()
+//        }
+
+
     }
 
     private fun initViews() {
@@ -72,69 +72,70 @@ class HomeActivity : BaseActivity(),OnRowItemClicked {
 
     }
 
-    private fun bottomSheetDialog() {
+//    private fun bottomSheetDialog() {
+//
+//        val bottomSheetDialog = BottomSheetDialog(this, R.style.BottomSheetDialogTheme)
+//        val view = LayoutInflater.from(applicationContext).inflate(
+//            R.layout.bottom_sheet_layout, findViewById(R.id.llBottomConatainer)
+//        )
+//        bottomSheetDialog.setContentView(view)
+//        bottomSheetDialog.setCanceledOnTouchOutside(true)
+//        bottomSheetDialog.show()
+//
+//        val mradionName = bottomSheetDialog.findViewById<RadioButton>(R.id.radioName)
+//        val mradionAmount = bottomSheetDialog.findViewById<RadioButton>(R.id.radioAmount)
+//        val mradioLatest = bottomSheetDialog.findViewById<RadioButton>(R.id.radioLatest)
+//        val mradioGroup = bottomSheetDialog.findViewById<RadioGroup>(R.id.radioGroup)
+//
+//        val mbtnApplyBSD = bottomSheetDialog.findViewById<TextView>(R.id.btnApplyBSD)
+//        val mbtnClear = bottomSheetDialog.findViewById<TextView>(R.id.tvClearBSD)
+//        val mbtnCancel = bottomSheetDialog.findViewById<TextView>(R.id.btnCancelBSD)
+//        val mbtnTodayBDS = bottomSheetDialog.findViewById<TextView>(R.id.btnTodayBDS)
+//        val mbtnPendingSD = bottomSheetDialog.findViewById<TextView>(R.id.btnPendingSD)
+//        val btnUpcomingBSD = bottomSheetDialog.findViewById<TextView>(R.id.btnUpcomingBSD)
+//
+//        mradionAmount?.setOnClickListener {
+//            if (mradionAmount != null) {
+//                if (!mradionAmount.isChecked) {
+//                    mradionAmount.isChecked = true
+//                }
+//            }
+//
+//            if (mradionName != null) {
+//                if (mradionName.isChecked) {
+//                    mradionName.isChecked = false
+//                }
+//            }
+//
+//            if (mradioLatest != null) {
+//                if (mradioLatest.isChecked) {
+//                    mradioLatest.isChecked = false
+//                }
+//            }
+//        }
+//
+//        mbtnCancel?.setOnClickListener {
+//            bottomSheetDialog.cancel()
+//        }
+//
+////        mbtnApplyBSD?.setOnClickListener {
+////
+////            if (mradioLatest?.isChecked!!) {
+////                SharedPref.writeIntToPref(Const.RADIO_BUTTOM, 3)
+////                EventBus.getDefault().post(NewTodoItemEvent(3))
+////                bottomSheetDialog.cancel()
+////            } else if (mradionAmount?.isChecked!!) {
+////                SharedPref.writeIntToPref(Const.RADIO_BUTTOM, 2)
+////                EventBus.getDefault().post(NewTodoItemEvent(2))
+////                bottomSheetDialog.cancel()
+////            } else if (mradionName?.isChecked!!) {
+////                SharedPref.writeIntToPref(Const.RADIO_BUTTOM, 1)
+////                EventBus.getDefault().post(NewTodoItemEvent(1))
+////                bottomSheetDialog.cancel()
+////            }
+////        }
+//    }
 
-        val bottomSheetDialog = BottomSheetDialog(this, R.style.BottomSheetDialogTheme)
-        val view = LayoutInflater.from(applicationContext).inflate(
-            R.layout.bottom_sheet_layout, findViewById(R.id.llBottomConatainer)
-        )
-        bottomSheetDialog.setContentView(view)
-        bottomSheetDialog.setCanceledOnTouchOutside(true)
-        bottomSheetDialog.show()
-
-        val mradionName = bottomSheetDialog.findViewById<RadioButton>(R.id.radioName)
-        val mradionAmount = bottomSheetDialog.findViewById<RadioButton>(R.id.radioAmount)
-        val mradioLatest = bottomSheetDialog.findViewById<RadioButton>(R.id.radioLatest)
-        val mradioGroup = bottomSheetDialog.findViewById<RadioGroup>(R.id.radioGroup)
-
-        val mbtnApplyBSD = bottomSheetDialog.findViewById<TextView>(R.id.btnApplyBSD)
-        val mbtnClear = bottomSheetDialog.findViewById<TextView>(R.id.tvClearBSD)
-        val mbtnCancel = bottomSheetDialog.findViewById<TextView>(R.id.btnCancelBSD)
-        val mbtnTodayBDS = bottomSheetDialog.findViewById<TextView>(R.id.btnTodayBDS)
-        val mbtnPendingSD = bottomSheetDialog.findViewById<TextView>(R.id.btnPendingSD)
-        val btnUpcomingBSD = bottomSheetDialog.findViewById<TextView>(R.id.btnUpcomingBSD)
-
-        mradionAmount?.setOnClickListener {
-            if (mradionAmount != null) {
-                if (!mradionAmount.isChecked) {
-                    mradionAmount.isChecked = true
-                }
-            }
-
-            if (mradionName != null) {
-                if (mradionName.isChecked) {
-                    mradionName.isChecked = false
-                }
-            }
-
-            if (mradioLatest != null) {
-                if (mradioLatest.isChecked) {
-                    mradioLatest.isChecked = false
-                }
-            }
-        }
-
-        mbtnCancel?.setOnClickListener {
-            bottomSheetDialog.cancel()
-        }
-
-        mbtnApplyBSD?.setOnClickListener {
-
-            if (mradioLatest?.isChecked!!) {
-                SharedPref.writeIntToPref(Const.RADIO_BUTTOM, 3)
-                EventBus.getDefault().post(NewTodoItemEvent(3))
-                bottomSheetDialog.cancel()
-            } else if (mradionAmount?.isChecked!!) {
-                SharedPref.writeIntToPref(Const.RADIO_BUTTOM, 2)
-                EventBus.getDefault().post(NewTodoItemEvent(2))
-                bottomSheetDialog.cancel()
-            } else if (mradionName?.isChecked!!) {
-                SharedPref.writeIntToPref(Const.RADIO_BUTTOM, 1)
-                EventBus.getDefault().post(NewTodoItemEvent(1))
-                bottomSheetDialog.cancel()
-            }
-        }
-    }
     /*private fun initializeCustomerRecyclerView() {
         customerAdapter = CustomerAdapter(customerList, this)
         customerAdapter.setOnItemClickListener(object :
@@ -164,8 +165,6 @@ class HomeActivity : BaseActivity(),OnRowItemClicked {
     }
 
 
-
-
     private fun setViewPagerAdapter() {
         pagerAdapter = ViewPagerFragmentAdapter(supportFragmentManager)
         home_viewPager.setAdapter(pagerAdapter)
@@ -179,7 +178,6 @@ class HomeActivity : BaseActivity(),OnRowItemClicked {
     override fun onItem(model: Supplier) {
 
     }
-
 
 
 }

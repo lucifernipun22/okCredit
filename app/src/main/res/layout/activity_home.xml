@@ -7,27 +7,96 @@
     android:orientation="vertical"
     tools:context=".Views.activities.HomeActivity">
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_10"
-        android:background="@drawable/rectangle_rounded_corners_gray">
+        android:animateLayoutChanges="true">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvSearch"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/etMaterialSearch"
+                    style="@style/MyCustomTheme"
+                    android:layout_width="0dp"
+                    android:hint="Search and Add"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+                <ImageButton
+                    android:id="@+id/ivMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="8dp"
+                    android:tint="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_menu" />
+                <ImageButton
+                    android:id="@+id/ivHome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:background="@null"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="8dp"
+                    android:tint="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@+id/etMaterialSearch"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/etMaterialSearch"
+                    app:srcCompat="@drawable/ic_home" />
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lottie_collection_highlighter"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="@+id/ivMenu"
+                    app:layout_constraintTop_toTopOf="@+id/ivMenu"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/dot_highlighter" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+<!--    <FrameLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="@dimen/dp_10"-->
+<!--        android:background="@drawable/rectangle_rounded_corners_gray">-->
 
-        <EditText
-            android:id="@+id/et_search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp_5"
-            android:background="@drawable/rectangle_rounded_corners_gray"
-            android:drawableStart="@drawable/ic_menu"
-            android:drawableEnd="@drawable/ic_home"
-            android:drawablePadding="@dimen/dp_10"
-            android:hint="@string/search_add"></EditText>
-    </FrameLayout>
+<!--        <EditText-->
+<!--            android:id="@+id/et_search"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="@dimen/dp_5"-->
+<!--            android:background="@drawable/rectangle_rounded_corners_gray"-->
+<!--            android:drawableStart="@drawable/ic_menu"-->
+<!--            android:drawableEnd="@drawable/ic_home"-->
+<!--            android:drawablePadding="@dimen/dp_10"-->
+<!--            android:hint="@string/search_add"></EditText>-->
+<!--    </FrameLayout>-->
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp_5"
         android:layout_weight="1"
         android:orientation="vertical">
@@ -59,42 +128,64 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_0.2"
+        android:layout_marginBottom="@dimen/dp_5"
         android:background="@color/black_44" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/dp_7"
-        android:layout_weight="3"
-        android:gravity="center"
-        android:orientation="horizontal">
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_marginTop="@dimen/dp_7"-->
+    <!--        android:layout_weight="4"-->
+    <!--        android:gravity="center"-->
+    <!--        android:orientation="horizontal">-->
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnAddCustomer"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_margin="@dimen/dp_5"
-            android:layout_weight="1"
-            android:background="@drawable/addcustomer_btn_bg"
-            android:drawableStart="@drawable/ic_baseline_person_add_24"
-            android:gravity="center"
-            android:text="@string/add_customer"
-            android:textColor="@color/white" />
+    <!--        <androidx.cardview.widget.CardView-->
+    <!--            android:id="@+id/cardView1"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="@dimen/dp_35"-->
+    <!--            android:layout_margin="@dimen/dp_5"-->
+    <!--            android:layout_weight="1"-->
+    <!--            android:elevation="@dimen/dp_10"-->
+    <!--            app:cardElevation="@dimen/dp_5">-->
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnAddFilter"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_margin="@dimen/dp_9"
-            android:layout_weight="1"
-            android:background="@drawable/addcustomer_btn_bg"
-            android:drawableStart="@drawable/ic_baseline_filter_list_24"
-            android:gravity="center"
-            android:text="@string/filter"
-            android:textColor="@color/white"
-            android:visibility="invisible" />
-    </LinearLayout>
+    <!--            <androidx.appcompat.widget.AppCompatButton-->
+    <!--                android:id="@+id/btnAddCustomer"-->
+    <!--                style="@style/Widget.AppCompat.Button"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="@dimen/dp_35"-->
+    <!--                android:background="@drawable/addcustomer_btn_bg"-->
+    <!--                android:drawableStart="@drawable/ic_baseline_person_add_24"-->
+    <!--                android:gravity="center"-->
+    <!--                android:text="@string/add_customer"-->
+    <!--                android:textColor="@color/white" />-->
+
+    <!--        </androidx.cardview.widget.CardView>-->
+
+    <!--        <androidx.cardview.widget.CardView-->
+    <!--            android:id="@+id/cardView2"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="@dimen/dp_35"-->
+    <!--            android:layout_margin="@dimen/dp_5"-->
+    <!--            android:layout_weight="1"-->
+    <!--            android:elevation="@dimen/dp_10"-->
+    <!--            android:visibility="invisible"-->
+    <!--            app:cardElevation="@dimen/dp_5">-->
+
+    <!--            <androidx.appcompat.widget.AppCompatButton-->
+    <!--                android:id="@+id/btnAddFilter"-->
+    <!--                style="@style/Widget.AppCompat.Button"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:background="@drawable/addcustomer_btn_bg"-->
+    <!--                android:drawableStart="@drawable/ic_baseline_filter_list_24"-->
+    <!--                android:gravity="center"-->
+    <!--                android:text="@string/filter"-->
+    <!--                android:textColor="@color/white"-->
+    <!--                android:visibility="invisible" />-->
+
+    <!--        </androidx.cardview.widget.CardView>-->
+
+
+    <!--    </LinearLayout>-->
+
 </LinearLayout>

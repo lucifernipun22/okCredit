@@ -1,5 +1,6 @@
 package com.example.okcredit.Views.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -16,14 +17,12 @@ import com.example.okcredit.ViewModel.CustomerViewModel
 import com.example.okcredit.ViewModel.CustomerViewModelFactory
 import com.example.okcredit.ViewModel.SupplierViewModel
 import com.example.okcredit.ViewModel.SupplierViewModelFactory
-import com.example.okcredit.Views.activities.AddCustomerActivity
-import com.example.okcredit.Views.activities.AddSupplierActvity
-import com.example.okcredit.Views.activities.CustomerTransactionActivity
-import com.example.okcredit.Views.activities.SupplierTransactionActivity
+import com.example.okcredit.Views.activities.*
 import com.example.okcredit.Views.adapters.CustomerAdapter
 import com.example.okcredit.Views.adapters.SupplierAdapter
 import com.example.okcredit.Views.interfaces.OnRowItemClicked
 import com.example.okcredit.Views.values.OkCreditApplication
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_customer.*
 import kotlinx.android.synthetic.main.fragment_supplier.*
 import kotlinx.android.synthetic.main.fragment_supplier.view.*
@@ -36,7 +35,7 @@ private const val ARG_PARAM2 = "param2"*/
 class SupplierFragment : Fragment(), OnRowItemClicked {
     var customerList = mutableListOf<Supplier>()
 
-
+    lateinit var homeActivity: HomeActivity
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,16 +47,24 @@ class SupplierFragment : Fragment(), OnRowItemClicked {
     companion object {
         fun newInstance(): SupplierFragment {
             return SupplierFragment()
-
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+//        homeActivity.btnAddFilter.visibility = View.INVISIBLE
+//        homeActivity.cardView2.visibility = View.INVISIBLE
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        homeActivity = context as HomeActivity
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews(view)
-
-
     }
 
     private fun initViews(view: View) {
@@ -68,6 +75,8 @@ class SupplierFragment : Fragment(), OnRowItemClicked {
 
         val viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(SupplierViewModel::class.java)
+
+
 
         viewModel.getSupplierList().observe(this, Observer {
             if (it != null)
@@ -82,7 +91,6 @@ class SupplierFragment : Fragment(), OnRowItemClicked {
             startActivity(intent)
         }
     }
-
 
 
     override fun onItemClick(model: Customer) {
