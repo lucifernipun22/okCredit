@@ -2,11 +2,11 @@ package com.example.okcredit.Views.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.*
 import androidx.lifecycle.ViewModelProviders
+import com.bumptech.glide.load.engine.Resource
 import com.example.okcredit.Data.local.Customer
 import com.example.okcredit.Data.local.OkCreditDAO
 import com.example.okcredit.Data.local.User
@@ -17,22 +17,20 @@ import com.example.okcredit.ViewModel.CustomerViewModelFactory
 import com.example.okcredit.Views.adapters.CustomerAdapter
 import com.example.okcredit.Views.adapters.ViewPagerFragmentAdapter
 import com.example.okcredit.Views.fragments.NewTodoItemEvent
-import com.example.okcredit.Views.interfaces.ComminicationListner
-import com.example.okcredit.Views.values.Const
 import com.example.okcredit.Views.interfaces.OnRowItemClicked
+import com.example.okcredit.Views.values.Const
 import com.example.okcredit.Views.values.OkCreditApplication
+import com.example.okcredit.Views.values.Prefs.getString
 import com.example.okcredit.Views.values.SharedPref
-import com.example.okcredit.Views.values.Tools
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.san.app.activity.BaseActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
-import org.greenrobot.eventbus.EventBus
-import org.jetbrains.anko.toast
 import kotlinx.android.synthetic.main.customer_item_layout.view.*
+import org.greenrobot.eventbus.EventBus
 
 
-class HomeActivity : BaseActivity(),OnRowItemClicked {
+class HomeActivity : BaseActivity(), OnRowItemClicked {
 
     lateinit var okCreditDao: OkCreditDAO
     lateinit var customerViewModel: CustomerViewModel
@@ -43,6 +41,7 @@ class HomeActivity : BaseActivity(),OnRowItemClicked {
     private lateinit var customerAdapter: CustomerAdapter
     private lateinit var pagerAdapter: ViewPagerFragmentAdapter
     private lateinit var user: User
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -163,8 +162,6 @@ class HomeActivity : BaseActivity(),OnRowItemClicked {
     }
 
 
-
-
     private fun setViewPagerAdapter() {
         pagerAdapter = ViewPagerFragmentAdapter(supportFragmentManager)
         home_viewPager.setAdapter(pagerAdapter)
@@ -174,7 +171,6 @@ class HomeActivity : BaseActivity(),OnRowItemClicked {
     override fun onItemClick(model: Customer) {
 
     }
-
 
 
 }

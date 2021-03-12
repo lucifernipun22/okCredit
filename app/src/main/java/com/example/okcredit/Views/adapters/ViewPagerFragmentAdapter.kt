@@ -1,10 +1,14 @@
 package com.example.okcredit.Views.adapters
 
+import android.app.Application
+import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.example.okcredit.R
 import com.example.okcredit.Views.fragments.CustomerFragment
 import com.example.okcredit.Views.fragments.SupplierFragment
+import com.example.okcredit.Views.values.Prefs.getString
 
 class ViewPagerFragmentAdapter(fragmentManager: FragmentManager) :
     FragmentStatePagerAdapter(fragmentManager) {
@@ -18,13 +22,13 @@ class ViewPagerFragmentAdapter(fragmentManager: FragmentManager) :
     }
 
     override fun getCount(): Int {
-        return 2;
+        return 2
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
         var tabTitle: String = ""
         when (position) {
-            0 -> tabTitle = "Customer";
+            0 -> tabTitle = "Customer"
             1 -> tabTitle = "Supplier"
         }
         return tabTitle

@@ -73,4 +73,6 @@
     <string name="received">प्राप्त किया</string>
     <string name="given">दिया हुआ</string>
     <string name="search_or_add">खोजें या जोड़ें</string>
+    <string name="customer">ग्राहक</string>
+    <string name="supplier">देने वाला</string>
 </resources>
