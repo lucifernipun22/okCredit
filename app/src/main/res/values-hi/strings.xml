@@ -74,5 +74,8 @@
     <string name="given">दिया हुआ</string>
     <string name="search_or_add">खोजें या जोड़ें</string>
     <string name="customer">ग्राहक</string>
+    <string name="added_on_09_mar_2021">जोड़ा गया </string>
     <string name="supplier">देने वाला</string>
+    <string name="add_from_contacts">संपर्कों से जल्दी से जोड़ने के लिए</string>
+    <string name="add_supplier">आपूर्तिकर्ता जोड़ें</string>
 </resources>

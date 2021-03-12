@@ -28,8 +28,7 @@ data class User(
     var contactPersonName: String = "",
     @ColumnInfo(name = "customers")
     var customers: MutableList<Customer> = mutableListOf(),
-    /*@PrimaryKey
-    var id: String = UUID.randomUUID().toString()*/
+
 ) : Parcelable
 {
     @PrimaryKey(autoGenerate = true)

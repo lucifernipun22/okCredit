@@ -57,6 +57,14 @@ class CustomerAdapter(
             view.apply {
                 tv_fullname.text = model.name
                 tv_name.text = model.name?.first().toString()
+                if (model.transactions.size > 0) {
+                    tv_date.text = model.transactions[0].createdAt.toString()
+                    tv_status.text = model.transactions[0].type.toString()
+                    tv_price.text = model.transactions[0].amount.toString()
+                } else {
+                    tv_status.text = model.balanceType
+                    tv_price.text = model.balance
+                }
                 constraintLayout.setOnClickListener {
                     mlistner.onItemClick(model)
                 }

@@ -184,7 +184,7 @@ class SupplierTransactionActivity
         val phone = Prefs.getString("phone")
         return db.getOkCreditDao().getUser(phone!!)
     }
-   /* private fun updateDb(): User {
+ /*   private fun updateDb(): Customer {
         Log.d(tag, "Customer updated successfully inDb1 ${user.customers[0].balance}")
         user.customers.find { it.id == customer.id }?.apply {
             balance = customer.balance

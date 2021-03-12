@@ -31,12 +31,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import kotlin.math.abs
+
 class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
     companion object {
         const val tag: String = "CustomerActivity"
         const val START_ACTIVITY_2_REQUEST_CODE = 2
         const val START_ACTIVITY_3_REQUEST_CODE = 3
     }
+
     private lateinit var transactions: MutableList<Transaction>
     private lateinit var transactionAdapter: CustomerTransactionAdapter
     private lateinit var db: OkCreditDatabase
@@ -51,6 +53,7 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
         //Set Customer data
         setCustomerData()
     }
+
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     private fun initViews() {
         //user = intent.getParcelableExtra("user")!!
@@ -58,12 +61,14 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
         Log.d(tag, "customer===> $customer")
         disposable = CompositeDisposable()
         db = OkCreditDatabase.getRoomDatabase(this)
-        //cvCardView.setNavigationOnClickListener { onBackPressed() }
+        toolbar.setNavigationOnClickListener { onBackPressed() }
         initializeTransactionRecyclerView()
         call_btn.setOnClickListener(this)
         btnAcceptPayment.setOnClickListener(this)
         btnGivePayment.setOnClickListener(this)
+//        btnBackArrow.setOnClickListener(this)
     }
+
     private fun initializeTransactionRecyclerView() {
         transactions = customer.transactions.toMutableList()
         transactionAdapter = CustomerTransactionAdapter(transactions, this)
@@ -79,6 +84,7 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
         setupTransactionUI()
         calculateBalance()
     }
+
     private fun setupTransactionUI() {
         if (transactions.isNullOrEmpty()) {
             rvTransactions.visibility = View.GONE
@@ -94,6 +100,7 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
             bottomButtonContainer.visibility = View.VISIBLE
         }
     }
+
     private fun gotoTransactionScreen(t: Transaction) {
         val intent = Intent(this, TransactionActivity::class.java)
         intent.putExtra("customer", customer)
@@ -103,6 +110,7 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
             START_ACTIVITY_2_REQUEST_CODE
         )
     }
+
     private fun gotoAddTransactionScreen(type: String) {
         val intent = Intent(this, ReceivedActivity::class.java)
         intent.putExtra("customer", customer)
@@ -112,6 +120,7 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
             START_ACTIVITY_3_REQUEST_CODE
         )
     }
+
     private fun setCustomerData() {
         if (customer.profileImage !== null) {
             Glide.with(this)
@@ -126,9 +135,11 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
         }
         tvName.text = customer.name
     }
+
     private fun handleError(t: Throwable?) {
         Log.d(tag, "handleError:  ${t?.localizedMessage}")
     }
+
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.call_btn -> {
@@ -142,8 +153,17 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btnGivePayment -> {
                 gotoAddTransactionScreen("debit")
             }
+//            R.id.btnBackArrow -> {
+////                gotoHomeActivity()
+//            }
         }
     }
+
+//    private fun gotoHomeActivity() {
+//        val intent = Intent(this, HomeActivity::class.java)
+//        startActivity(intent)
+//    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == START_ACTIVITY_3_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
@@ -167,10 +187,12 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
             super.onActivityResult(requestCode, resultCode, data)
         }
     }
+
     private fun getUserFromDb(): User {
         val phone = Prefs.getString("phone")
         return db.getOkCreditDao().getUser(phone!!)
     }
+
     private fun updateDb(): User {
         Log.d(tag, "Customer updated successfully inDb1 ${user.customers[0].balance}")
         user.customers.find { it.id == customer.id }?.apply {
@@ -182,8 +204,10 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
         db.getOkCreditDao().updateUser(user)
         return getUserFromDb()
     }
+
     private fun updateCustomer() {
         calculateBalance()
+
 //        disposable!!.add(
 //            Single.create<User> { e -> e.onSuccess(updateDb()) }
 //                .subscribeOn(Schedulers.io())
@@ -198,6 +222,7 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
             initializeTransactionRecyclerView()
         }
     }
+
     @SuppressLint("SetTextI18n")
     private fun calculateBalance() {
         var debitedAmt = 0.0
@@ -222,6 +247,7 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
         }
         Log.d(tag, "Customer balance --> $customer")
     }
+
     override fun onStop() {
         super.onStop()
         Log.d(tag, "onStop called from Home")
