@@ -73,4 +73,12 @@
     <string name="given">Given</string>
     <string name="add_credit">Add Credit</string>
     <string name="search_or_add">Search or Add</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="customers">Customers</string>
+    <string name="account_statement">Account Statement</string>
+    <string name="supplier">Supplier</string>
+    <string name="net_balance">Net Balance</string>
+    <string name="customer_khata">Customer Khata</string>
+    <string name="supplier_khata">Supplier Khata</string>
 </resources>

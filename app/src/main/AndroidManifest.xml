@@ -21,7 +21,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OkCredit">
-        <activity android:name=".Views.activities.SupplierTransactionNextActivity"></activity>
+        <activity android:name=".Views.activities.AccountSupplierActivity" />
+        <activity android:name=".Views.activities.AccountCustomerActivity" />
+        <activity android:name=".Views.activities.AccountActivity" />
+        <activity android:name=".Views.activities.SupplierTransactionNextActivity" />
         <activity android:name=".Views.activities.AddSupplierActvity" />
         <activity android:name=".Views.activities.ReceivedSuppplierActivity" />
         <activity android:name=".Views.activities.SupplierTransactionActivity" />
@@ -41,7 +44,7 @@
         <activity android:name=".Views.activities.MobileNumberActivity" />
         <activity android:name=".Views.activities.IntroductionActivity" />
         <activity android:name=".Views.activities.LanguageSelect" />
-        <activity android:name=".Views.activities.SplashScreen1">
+        <activity android:name=".Views.activities.SplashScreen1" >
 
         </activity>
         <activity android:name=".Views.activities.SplashScreen2" />

@@ -26,5 +26,25 @@
     <color name="black_66">#444444</color>
     <color name="tutorial_highlight_dot">#ee6002</color>
 
+    <color name="grey100">#eaeaea</color>
+    <color name="grey150">#d8d8d8</color>
+    <color name="grey200">#d0d0d0</color>
+    <color name="grey400">#ababab</color>
+    <color name="grey50">#fafafa</color>
+    <color name="grey500">#9b9b9b</color>
+    <color name="grey600">#666666</color>
+    <color name="grey75">#ededed</color>
+    <color name="grey800">#888888</color>
+    <color name="grey_bg">#40d7d7d7</color>
+    <color name="grey_line">#22000000</color>
+    <color name="grey_transparent">#40d8d8d8</color>
+    <color name="primary">#4caf50</color>
+    <color name="primary_dark">#388e3c</color>
+    <color name="md_red_500">#f44336</color>
+    <color name="text_subtitle">#888</color>
+    <color name="text_subtitle_inverse">#eeeeee</color>
+    <color name="design_default_color_primary_dark">#303f9f</color>
+    <color name="divider">#f0f0f0</color>
+
 
 </resources>

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Views.activities.AccountCustomerActivity">
+    <include layout="@layout/view_action_bar" />
+
+<ScrollView
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+
+                <ImageView
+                    android:id="@+id/customerCountIcon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="16dp"
+                    android:tint="@color/grey800"
+                    app:srcCompat="@drawable/ic_customer" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/customerCountIcon"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/customerCountLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/customers"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_subtitle"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/customerCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/balanceIcon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="16dp"
+                    android:tint="@color/grey800"
+                    app:srcCompat="@drawable/ic_account_balance" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/balanceIcon"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/balanceLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/balance"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_subtitle"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="24sp" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
+
+    <RelativeLayout
+        android:id="@+id/accountSummary"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/accountSummaryIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:tint="@color/grey800"
+            app:srcCompat="@drawable/ic_history" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="72dp"
+            android:text="@string/account_statement"
+            android:textColor="@color/text_subtitle"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/backup"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/backupIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:tint="@color/grey800"
+            app:srcCompat="@drawable/ic_download" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="72dp"
+            android:text="Download Backup"
+            android:textColor="@color/text_subtitle"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/divider" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Settings"
+        android:textAllCaps="true"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/security"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/securityIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:tint="@color/grey800"
+            app:srcCompat="@drawable/ic_secure" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="72dp"
+            android:text="Security"
+            android:textColor="@color/text_subtitle"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/profile"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/profileIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:tint="@color/grey800"
+            app:srcCompat="@drawable/ic_business" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="72dp"
+            android:text="Profile"
+            android:textColor="@color/text_subtitle"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/collections"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/collectionsIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:tint="@color/grey800"
+            app:srcCompat="@drawable/ic_collection_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="72dp"
+            android:text="Collections"
+            android:textColor="@color/text_subtitle"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/reminder"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/reminderIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:tint="@color/grey800"
+            app:srcCompat="@drawable/ic_reminder" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="72dp"
+            android:text="Reminders"
+            android:textColor="@color/text_subtitle"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/languageContainer"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/languageIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:tint="@color/grey800"
+            app:srcCompat="@drawable/ic_language" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="72dp"
+            android:text="@string/language"
+            android:textColor="@color/text_subtitle"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/activeLanguage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="32dp"
+            android:fontFamily="@font/bold"
+            android:textAllCaps="true"
+            android:textColor="@color/primary"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/divider" />
+</LinearLayout>
+</ScrollView>
+
+</LinearLayout>

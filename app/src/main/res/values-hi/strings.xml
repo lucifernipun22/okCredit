@@ -73,4 +73,12 @@
     <string name="received">प्राप्त किया</string>
     <string name="given">दिया हुआ</string>
     <string name="search_or_add">खोजें या जोड़ें</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="customers">ग्राहकों</string>
+    <string name="account_statement">खाता विवरण</string>
+    <string name="supplier">देने वाला</string>
+    <string name="net_balance">Net Balance</string>
+    <string name="customer_khata">Customer Khata</string>
+    <string name="supplier_khata">Supplier Khata</string>
 </resources>

@@ -1,11 +1,16 @@
 package com.example.okcredit.Views.activities
 
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
+import android.view.WindowManager
 import android.widget.*
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.lifecycle.ViewModelProviders
 import com.example.okcredit.Data.local.Customer
 import com.example.okcredit.Data.local.OkCreditDAO
@@ -25,6 +30,7 @@ import com.example.okcredit.Views.values.OkCreditApplication
 import com.example.okcredit.Views.values.SharedPref
 import com.example.okcredit.Views.values.Tools
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.navigation.NavigationView
 import com.san.app.activity.BaseActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
@@ -33,13 +39,13 @@ import org.jetbrains.anko.toast
 import kotlinx.android.synthetic.main.customer_item_layout.view.*
 
 
-class HomeActivity : BaseActivity(),OnRowItemClicked {
+class HomeActivity : BaseActivity(),OnRowItemClicked, NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var okCreditDao: OkCreditDAO
     lateinit var customerViewModel: CustomerViewModel
     lateinit var okCreditRepository: OkCreditRepo
     var radioButtonClick: Int? = null
-
+    lateinit var mDrawerToggle: ActionBarDrawerToggle
     private lateinit var customerList: MutableList<Customer>
     private lateinit var customerAdapter: CustomerAdapter
     private lateinit var pagerAdapter: ViewPagerFragmentAdapter
@@ -51,13 +57,13 @@ class HomeActivity : BaseActivity(),OnRowItemClicked {
         setViewPagerAdapter()
         initializations()
 
-
-        /*btnAddCustomer.setOnClickListener {
-            intent = Intent(this, AddCustomerActivity::class.java)
+       // drawerSetup()
+        btnAddCustomer.setOnClickListener {
+            intent = Intent(this, AccountActivity::class.java)
             startActivity(intent)
-        }*/
+        }
 
-        et_search.setOnClickListener {
+        etMaterialSearch.setOnClickListener {
             startActivity()
         }
 
@@ -66,6 +72,49 @@ class HomeActivity : BaseActivity(),OnRowItemClicked {
         }
         initViews()
     }
+   /* private fun drawerSetup() {
+        mDrawerToggle = object : ActionBarDrawerToggle(
+            this@HomeActivity,
+            navDrawer,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        ) {
+
+            override fun onDrawerClosed(view: View) {
+                super.onDrawerClosed(view)
+                Log.e("NICK", "Sclose")
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    val window = window
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                    window.statusBarColor = Color.BLUE
+                }
+                invalidateOptionsMenu() // creates call to onPrepareOptionsMenu()
+            }
+
+            override fun onDrawerOpened(drawerView: View) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    val window = window
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                    window.statusBarColor = Color.GREEN
+                }
+                super.onDrawerOpened(drawerView)
+                Log.e("NICK", "Sopen")
+                //UpdateHeaderDetails()
+
+                invalidateOptionsMenu()
+            }
+        }
+
+        val headerView = navigationView.inflateHeaderView(R.layout.nav_header_main)
+        val llHeaderMain = headerView.findViewById(R.id.llHeaderMain) as LinearLayout
+        navigationView.setNavigationItemSelectedListener(this)
+        navigationView.setCheckedItem(R.id.nav_account)
+
+        llHeaderMain.setOnClickListener {
+           // goToProfile()
+        }
+    }*/
 
     private fun initViews() {
         customerList = mutableListOf()
@@ -180,6 +229,9 @@ class HomeActivity : BaseActivity(),OnRowItemClicked {
 
     }
 
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        TODO("Not yet implemented")
+    }
 
 
 }

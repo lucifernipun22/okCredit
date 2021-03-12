@@ -5,9 +5,227 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    android:id="@+id/navDrawer"
     tools:context=".Views.activities.HomeActivity">
 
-    <FrameLayout
+   <!-- <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:elevation="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true">
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvSearch"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="12dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.mancj.materialsearchbar.MaterialSearchBar
+                            android:id="@+id/etMaterialSearch"
+                            style="@style/MyCustomTheme"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:mt_highlightedTextColor="@color/tx_credit"
+                            app:mt_hint="@string/search_or_add"
+                            app:mt_navIconEnabled="true"
+                            app:mt_navIconUseTint="@color/black"
+                            app:mt_placeholder="@string/search_or_add"
+                            app:mt_speechMode="false"
+                            app:mt_textColor="@color/black" />
+
+                        <ImageButton
+                            android:id="@+id/ivMenu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginBottom="6dp"
+                            android:background="@null"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:padding="8dp"
+                            android:tint="@color/black"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="@+id/etMaterialSearch"
+                            app:layout_constraintRight_toLeftOf="@+id/ivSort"
+                            app:layout_constraintTop_toTopOf="@+id/etMaterialSearch"
+                            app:srcCompat="@drawable/ic_account_balance_bank" />
+
+                        <ImageButton
+                            android:id="@+id/ivSort"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:layout_marginBottom="6dp"
+                            android:background="@null"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:padding="8dp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="@+id/etMaterialSearch"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/etMaterialSearch"
+                            app:srcCompat="@drawable/ic_sort" />
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/lottie_collection_highlighter"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:visibility="gone"
+                            app:layout_constraintStart_toStartOf="@+id/ivMenu"
+                            app:layout_constraintTop_toTopOf="@+id/ivMenu"
+                            app:lottie_autoPlay="true"
+                            app:lottie_loop="true"
+                            app:lottie_rawRes="@raw/dot_highlighter" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-10dp"
+                android:background="@color/colorPrimary"
+                android:visibility="gone"
+                app:tabIndicatorColor="@color/white"
+                app:tabIndicatorHeight="4dp"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextColor="@color/white" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCustomers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:context="com.example.velmurugan.navigationdrawerexample.MainActivity"></FrameLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/fbAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="bottom|center_vertical|center_horizontal|center"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:visibility="visible"
+            app:cardBackgroundColor="@color/green_dark"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="2dp"
+            app:contentPaddingLeft="20dp"
+            app:contentPaddingRight="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivIcon"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:tint="@color/white"
+                    app:srcCompat="@drawable/ic_add_customer" />
+
+                <TextView
+                    android:id="@+id/tvAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="12dp"
+                    android:fontFamily="@font/bold"
+                    android:text="@string/add_customer"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/activity_main_drawer">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvVersionNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp"
+                android:text="@string/versionNo"
+                android:textColor="@color/black_44"
+                android:textSize="@dimen/_10sdp" />
+
+
+        </LinearLayout>
+    </com.google.android.material.navigation.NavigationView>-->
+
+
+   <!-- <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp_10"
@@ -23,7 +241,82 @@
             android:drawableEnd="@drawable/ic_home"
             android:drawablePadding="@dimen/dp_10"
             android:hint="@string/search_add"></EditText>
-    </FrameLayout>
+    </FrameLayout>-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvSearch"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/etMaterialSearch"
+                    style="@style/MyCustomTheme"
+                    android:layout_width="0dp"
+                    android:hint="Search and Add"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                     />
+
+                <ImageButton
+                    android:id="@+id/ivMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="8dp"
+                    android:tint="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_menu" />
+
+                <ImageButton
+                    android:id="@+id/ivHome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:background="@null"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="8dp"
+                    android:tint="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@+id/etMaterialSearch"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/etMaterialSearch"
+                    app:srcCompat="@drawable/ic_home" />
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lottie_collection_highlighter"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="@+id/ivMenu"
+                    app:layout_constraintTop_toTopOf="@+id/ivMenu"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/dot_highlighter" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -53,6 +346,7 @@
             android:id="@+id/home_viewPager"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:padding="@dimen/dp_5" />
     </LinearLayout>
 
@@ -97,4 +391,5 @@
             android:textColor="@color/white"
             android:visibility="invisible" />
     </LinearLayout>
+
 </LinearLayout>
