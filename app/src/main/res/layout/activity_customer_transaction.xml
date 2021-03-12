@@ -335,7 +335,7 @@
                         android:layout_gravity="center_vertical"
                         android:fontFamily="@font/bold"
                         android:gravity="center"
-                        android:text="Received"
+                        android:text="@string/received"
                         android:textAllCaps="true"
                         android:textColor="@color/okCredit"
                         android:textSize="12dp" />
@@ -364,7 +364,7 @@
                         android:layout_gravity="center_vertical"
                         android:fontFamily="@font/bold"
                         android:gravity="center"
-                        android:text="Given"
+                        android:text="@string/given"
                         android:textAllCaps="true"
                         android:textColor="@color/red"
                         android:textSize="12dp" />

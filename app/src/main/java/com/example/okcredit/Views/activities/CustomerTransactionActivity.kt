@@ -26,10 +26,13 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_customer_transaction.*
 import kotlinx.android.synthetic.main.customer_item_layout.*
 import kotlinx.android.synthetic.main.layout_customer_trans_empty.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import kotlin.math.abs
 
-class CustomerTransactionActivity : AppCompatActivity() , View.OnClickListener{
+class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
     companion object {
         const val tag: String = "CustomerActivity"
 
@@ -104,7 +107,7 @@ class CustomerTransactionActivity : AppCompatActivity() , View.OnClickListener{
             emptyLayout.visibility = View.GONE
             rvTransactions.visibility = View.VISIBLE
             totalAmtContainer.visibility = View.VISIBLE
-           bottomButtonContainer.visibility = View.VISIBLE
+            bottomButtonContainer.visibility = View.VISIBLE
         }
     }
 
@@ -207,16 +210,19 @@ class CustomerTransactionActivity : AppCompatActivity() , View.OnClickListener{
 
     private fun updateCustomer() {
         calculateBalance()
-        disposable!!.add(
-            Single.create<User> { e -> e.onSuccess(updateDb()) }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    user = it
-                    initializeTransactionRecyclerView()
-                    Log.d(tag, "Customer updated successfully $user")
-                }) { handleError(it) }
-        )
+//        disposable!!.add(
+//            Single.create<User> { e -> e.onSuccess(updateDb()) }
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe({
+//                    user = it
+//                    initializeTransactionRecyclerView()
+//                    Log.d(tag, "Customer updated successfully $user")
+//                }) { handleError(it) }
+//        )
+        CoroutineScope(Dispatchers.Main).launch {
+            initializeTransactionRecyclerView()
+        }
     }
 
     @SuppressLint("SetTextI18n")

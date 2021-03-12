@@ -25,6 +25,10 @@ class CustomerViewModel(val repository: OkCreditRepo) : ViewModel() {
         repository.addTransaction(customerEntity)
     }
 
+    fun upadetTranaction(customerEntity: Customer) {
+        repository.updateTrasction(customerEntity)
+    }
+
     fun getTransactionList(): LiveData<List<Transaction>> {
         return repository.getTransactionList()
     }

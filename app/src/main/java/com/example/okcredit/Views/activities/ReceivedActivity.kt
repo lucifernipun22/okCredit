@@ -65,10 +65,27 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
 
         val viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(CustomerViewModel::class.java)
+
         val list = mutableListOf<Transaction>()
-        var customerEntity =
-            Transaction("1","2","2","2","2","1")
-        viewModel.addTransaction(customerEntity)
+        val amount = etAmount.text.toString()
+        val time = tvDate.text.toString()
+        val note = etNote.text.toString()
+        val photo = btnAddPhoto.textAlignment.toString()
+        var transctionlist =
+            Transaction(amount, type, time, note, photo, time)
+        list.add(transctionlist)
+
+        val newCustomer = Customer(
+            customer?.name,
+            customer?.phone,
+            customer?.profileImage,
+            list,
+            customer?.balance!!,
+            customer?.balanceType!!
+        )
+        viewModel.addTransaction(transctionlist)
+        viewModel.upadetTranaction(newCustomer)
+
 
     }
 
@@ -78,7 +95,7 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
         type = intent.getStringExtra("type")
         Log.d(tag, "customer===> $customer")
 
-         toolbar.setNavigationOnClickListener { onBackPressed() }
+        toolbar.setNavigationOnClickListener { onBackPressed() }
 
         disposable = CompositeDisposable()
         api = RestAdapter.getInstance()
@@ -93,6 +110,7 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
         btnAddPhoto.setOnClickListener(this)
         removeImg.setOnClickListener(this)
     }
+
     @SuppressLint("SimpleDateFormat")
     private fun setCustomerData() {
         if (customer?.profileImage !== null) {
@@ -189,7 +207,7 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
         setResult(Activity.RESULT_OK, intent)
         onBackPressed()
 
-      // createTransact()
+        // createTransact()
     }
 
     private fun createTransact() {

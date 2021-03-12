@@ -16,12 +16,19 @@ import com.example.okcredit.ViewModel.CustomerViewModel
 import com.example.okcredit.ViewModel.CustomerViewModelFactory
 import com.example.okcredit.Views.adapters.CustomerAdapter
 import com.example.okcredit.Views.adapters.ViewPagerFragmentAdapter
+import com.example.okcredit.Views.fragments.NewTodoItemEvent
+import com.example.okcredit.Views.interfaces.ComminicationListner
+import com.example.okcredit.Views.values.Const
 import com.example.okcredit.Views.interfaces.OnRowItemClicked
 import com.example.okcredit.Views.values.OkCreditApplication
+import com.example.okcredit.Views.values.SharedPref
 import com.example.okcredit.Views.values.Tools
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.san.app.activity.BaseActivity
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.bottom_sheet_layout.*
+import org.greenrobot.eventbus.EventBus
+import org.jetbrains.anko.toast
 import kotlinx.android.synthetic.main.customer_item_layout.view.*
 
 
@@ -30,6 +37,8 @@ class HomeActivity : BaseActivity(),OnRowItemClicked {
     lateinit var okCreditDao: OkCreditDAO
     lateinit var customerViewModel: CustomerViewModel
     lateinit var okCreditRepository: OkCreditRepo
+    var radioButtonClick: Int? = null
+
     private lateinit var customerList: MutableList<Customer>
     private lateinit var customerAdapter: CustomerAdapter
     private lateinit var pagerAdapter: ViewPagerFragmentAdapter
@@ -111,12 +120,17 @@ class HomeActivity : BaseActivity(),OnRowItemClicked {
         mbtnApplyBSD?.setOnClickListener {
 
             if (mradioLatest?.isChecked!!) {
-                Toast.makeText(this, "latest", Toast.LENGTH_SHORT).show()
-            } else if (mradionName?.isChecked!!) {
-                Toast.makeText(this, "Name", Toast.LENGTH_SHORT).show()
+                SharedPref.writeIntToPref(Const.RADIO_BUTTOM, 3)
+                EventBus.getDefault().post(NewTodoItemEvent(3))
+                bottomSheetDialog.cancel()
             } else if (mradionAmount?.isChecked!!) {
-                Toast.makeText(this, "amount", Toast.LENGTH_SHORT).show()
-
+                SharedPref.writeIntToPref(Const.RADIO_BUTTOM, 2)
+                EventBus.getDefault().post(NewTodoItemEvent(2))
+                bottomSheetDialog.cancel()
+            } else if (mradionName?.isChecked!!) {
+                SharedPref.writeIntToPref(Const.RADIO_BUTTOM, 1)
+                EventBus.getDefault().post(NewTodoItemEvent(1))
+                bottomSheetDialog.cancel()
             }
         }
     }
@@ -154,12 +168,13 @@ class HomeActivity : BaseActivity(),OnRowItemClicked {
     private fun setViewPagerAdapter() {
         pagerAdapter = ViewPagerFragmentAdapter(supportFragmentManager)
         home_viewPager.setAdapter(pagerAdapter)
-        tabLayout.setupWithViewPager(home_viewPager);
+        tabLayout.setupWithViewPager(home_viewPager)
     }
 
     override fun onItemClick(model: Customer) {
 
     }
+
 
 
 }

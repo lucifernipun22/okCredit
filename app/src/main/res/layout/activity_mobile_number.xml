@@ -124,7 +124,7 @@
             android:drawableStart="@drawable/ic_cell_phone_1"
             android:drawablePadding="@dimen/dp_8"
             android:fontFamily="sans-serif-light"
-            android:hint="Mobile Number" />
+            android:hint="@string/mobile_number" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

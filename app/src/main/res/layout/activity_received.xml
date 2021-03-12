@@ -106,7 +106,7 @@
              android:layout_height="?attr/actionBarSize"
              android:layout_gravity="center_horizontal"
              android:ems="40"
-             android:hint="Add Credit"
+             android:hint="@string/add_credit"
              android:inputType="numberDecimal"
              android:textCursorDrawable="@null"
              android:textSize="24sp"

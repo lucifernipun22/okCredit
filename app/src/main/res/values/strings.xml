@@ -64,4 +64,13 @@
     <string name="balance">Balance</string>
     <string name="send">send</string>
     <string name="txn_add_credit_btn">Give\nCredit</string>
+    <string name="number">number</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="add_contact">Add contact</string>
+    <string name="import_contact">Import contact</string>
+    <string name="verification_successful">Verification Successful</string>
+    <string name="received">Received</string>
+    <string name="given">Given</string>
+    <string name="add_credit">Add Credit</string>
+    <string name="search_or_add">Search or Add</string>
 </resources>
