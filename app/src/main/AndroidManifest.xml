@@ -26,7 +26,9 @@
         <activity android:name=".Views.activities.ReceivedSuppplierActivity" />
         <activity android:name=".Views.activities.SupplierTransactionActivity" />
         <activity android:name=".Views.activities.AddCustomerActivity" />
-        <activity android:name=".Views.activities.HomeActivity">
+        <activity android:name=".Views.activities.HomeActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.OkCredit.NoActionBar">
 
         </activity>
         <activity android:name=".Views.activities.TransactionActivity" />
