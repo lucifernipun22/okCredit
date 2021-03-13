@@ -32,6 +32,11 @@ class OkCreditRepo(val okCreditDAO: OkCreditDAO) {
             okCreditDAO.updateTrasction(customerEntity)
         }
     }
+    fun updateCustomer(customerEntity: Customer) {
+        CoroutineScope(Dispatchers.IO).launch {
+            okCreditDAO.updateCustomer(customerEntity)
+        }
+    }
 
     fun getTransactionList(): LiveData<List<Transaction>> {
         return okCreditDAO.getTransactionList()

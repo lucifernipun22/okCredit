@@ -83,7 +83,14 @@ class TransactionActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btnWpShare -> {
-                Toast.makeText(this, "WIP", Toast.LENGTH_SHORT).show()
+                val shareBody = "Udhaar ka saara Hisaab apne Phone me - Install kabson for FREE"
+                val sharingIntent = Intent(Intent.ACTION_SEND)
+                sharingIntent.type = "text/plain"
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here")
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
+                startActivity(
+                    Intent.createChooser(sharingIntent, resources.getString(R.string.share_using))
+                )
             }
             R.id.btnDelete -> {
                 showDeleteDialog()

@@ -39,6 +39,7 @@
     <color name="grey_line">#22000000</color>
     <color name="grey_transparent">#40d8d8d8</color>
     <color name="primary">#4caf50</color>
+    <color name="tx_credit">#ef5350</color>
     <color name="primary_dark">#388e3c</color>
     <color name="md_red_500">#f44336</color>
     <color name="text_subtitle">#888</color>

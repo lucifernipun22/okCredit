@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings.Global.getString
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -11,11 +12,17 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat.startActivity
+import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProviders
-import com.example.okcredit.Data.local.Customer
-import com.example.okcredit.Data.local.OkCreditDAO
-import com.example.okcredit.Data.local.Supplier
-import com.example.okcredit.Data.local.User
+import androidx.navigation.ui.AppBarConfiguration
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.Resource
+import com.bumptech.glide.request.RequestOptions
+import com.example.okcredit.Data.local.*
+import com.example.okcredit.Navigation.AccountFragment
+import com.example.okcredit.Navigation.AccountFragmentActivity
 import com.example.okcredit.R
 import com.example.okcredit.Repository.OkCreditRepo
 import com.example.okcredit.ViewModel.CustomerViewModel
@@ -23,23 +30,27 @@ import com.example.okcredit.ViewModel.CustomerViewModelFactory
 import com.example.okcredit.Views.adapters.CustomerAdapter
 import com.example.okcredit.Views.adapters.ViewPagerFragmentAdapter
 import com.example.okcredit.Views.fragments.NewTodoItemEvent
-import com.example.okcredit.Views.interfaces.ComminicationListner
-import com.example.okcredit.Views.values.Const
 import com.example.okcredit.Views.interfaces.OnRowItemClicked
+import com.example.okcredit.Views.values.Const
 import com.example.okcredit.Views.values.OkCreditApplication
+import com.example.okcredit.Views.values.Prefs
+import com.example.okcredit.Views.values.Prefs.getString
 import com.example.okcredit.Views.values.SharedPref
-import com.example.okcredit.Views.values.Tools
+import com.example.okcredit.databinding.ActivityHomeBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
 import com.san.app.activity.BaseActivity
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
-import org.greenrobot.eventbus.EventBus
-import org.jetbrains.anko.toast
 import kotlinx.android.synthetic.main.customer_item_layout.view.*
+import org.greenrobot.eventbus.EventBus
 
 
-class HomeActivity : BaseActivity(),OnRowItemClicked, NavigationView.OnNavigationItemSelectedListener {
+class HomeActivity : BaseActivity(), OnRowItemClicked, NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var okCreditDao: OkCreditDAO
     lateinit var customerViewModel: CustomerViewModel
@@ -50,29 +61,44 @@ class HomeActivity : BaseActivity(),OnRowItemClicked, NavigationView.OnNavigatio
     private lateinit var customerAdapter: CustomerAdapter
     private lateinit var pagerAdapter: ViewPagerFragmentAdapter
     private lateinit var user: User
+    private lateinit var db: OkCreditDatabase
+    private var disposable: CompositeDisposable? = null
+    private val tag: String = "HomeActivity"
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var binding: ActivityHomeBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
         setViewPagerAdapter()
         initializations()
-
-       // drawerSetup()
-        btnAddCustomer.setOnClickListener {
-            intent = Intent(this, AccountActivity::class.java)
-            startActivity(intent)
-        }
+        initViews()
 
         etMaterialSearch.setOnClickListener {
             startActivity()
         }
 
-        btnAddFilter.setOnClickListener {
-            bottomSheetDialog()
-        }
-        initViews()
+//        btnAddCustomer.setOnClickListener {
+//            intent = Intent(this, AddCustomerActivity::class.java)
+//            startActivity(intent)
+//        }
+
+//        btnAddFilter.setOnClickListener {
+//            bottomSheetDialog()
+//        }
+        drawerSetup()
+
     }
-   /* private fun drawerSetup() {
+
+
+    private fun initViews() {
+        customerList = mutableListOf()
+
+    }
+
+     private fun drawerSetup() {
         mDrawerToggle = object : ActionBarDrawerToggle(
             this@HomeActivity,
             navDrawer,
@@ -82,7 +108,7 @@ class HomeActivity : BaseActivity(),OnRowItemClicked, NavigationView.OnNavigatio
 
             override fun onDrawerClosed(view: View) {
                 super.onDrawerClosed(view)
-                Log.e("NICK", "Sclose")
+
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     val window = window
@@ -99,7 +125,7 @@ class HomeActivity : BaseActivity(),OnRowItemClicked, NavigationView.OnNavigatio
                     window.statusBarColor = Color.GREEN
                 }
                 super.onDrawerOpened(drawerView)
-                Log.e("NICK", "Sopen")
+
                 //UpdateHeaderDetails()
 
                 invalidateOptionsMenu()
@@ -110,93 +136,11 @@ class HomeActivity : BaseActivity(),OnRowItemClicked, NavigationView.OnNavigatio
         val llHeaderMain = headerView.findViewById(R.id.llHeaderMain) as LinearLayout
         navigationView.setNavigationItemSelectedListener(this)
         navigationView.setCheckedItem(R.id.nav_account)
-
+        etMaterialSearch.disableSearch()
         llHeaderMain.setOnClickListener {
-           // goToProfile()
-        }
-    }*/
 
-    private fun initViews() {
-        customerList = mutableListOf()
-
-    }
-
-    private fun bottomSheetDialog() {
-
-        val bottomSheetDialog = BottomSheetDialog(this, R.style.BottomSheetDialogTheme)
-        val view = LayoutInflater.from(applicationContext).inflate(
-            R.layout.bottom_sheet_layout, findViewById(R.id.llBottomConatainer)
-        )
-        bottomSheetDialog.setContentView(view)
-        bottomSheetDialog.setCanceledOnTouchOutside(true)
-        bottomSheetDialog.show()
-
-        val mradionName = bottomSheetDialog.findViewById<RadioButton>(R.id.radioName)
-        val mradionAmount = bottomSheetDialog.findViewById<RadioButton>(R.id.radioAmount)
-        val mradioLatest = bottomSheetDialog.findViewById<RadioButton>(R.id.radioLatest)
-        val mradioGroup = bottomSheetDialog.findViewById<RadioGroup>(R.id.radioGroup)
-
-        val mbtnApplyBSD = bottomSheetDialog.findViewById<TextView>(R.id.btnApplyBSD)
-        val mbtnClear = bottomSheetDialog.findViewById<TextView>(R.id.tvClearBSD)
-        val mbtnCancel = bottomSheetDialog.findViewById<TextView>(R.id.btnCancelBSD)
-        val mbtnTodayBDS = bottomSheetDialog.findViewById<TextView>(R.id.btnTodayBDS)
-        val mbtnPendingSD = bottomSheetDialog.findViewById<TextView>(R.id.btnPendingSD)
-        val btnUpcomingBSD = bottomSheetDialog.findViewById<TextView>(R.id.btnUpcomingBSD)
-
-        mradionAmount?.setOnClickListener {
-            if (mradionAmount != null) {
-                if (!mradionAmount.isChecked) {
-                    mradionAmount.isChecked = true
-                }
-            }
-
-            if (mradionName != null) {
-                if (mradionName.isChecked) {
-                    mradionName.isChecked = false
-                }
-            }
-
-            if (mradioLatest != null) {
-                if (mradioLatest.isChecked) {
-                    mradioLatest.isChecked = false
-                }
-            }
-        }
-
-        mbtnCancel?.setOnClickListener {
-            bottomSheetDialog.cancel()
-        }
-
-        mbtnApplyBSD?.setOnClickListener {
-
-            if (mradioLatest?.isChecked!!) {
-                SharedPref.writeIntToPref(Const.RADIO_BUTTOM, 3)
-                EventBus.getDefault().post(NewTodoItemEvent(3))
-                bottomSheetDialog.cancel()
-            } else if (mradionAmount?.isChecked!!) {
-                SharedPref.writeIntToPref(Const.RADIO_BUTTOM, 2)
-                EventBus.getDefault().post(NewTodoItemEvent(2))
-                bottomSheetDialog.cancel()
-            } else if (mradionName?.isChecked!!) {
-                SharedPref.writeIntToPref(Const.RADIO_BUTTOM, 1)
-                EventBus.getDefault().post(NewTodoItemEvent(1))
-                bottomSheetDialog.cancel()
-            }
         }
     }
-    /*private fun initializeCustomerRecyclerView() {
-        customerAdapter = CustomerAdapter(customerList, this)
-        customerAdapter.setOnItemClickListener(object :
-            CustomerAdapter.OnItemClickListener {
-            override fun onItemClick(view: View, position: Int) {
-                val c = customerList[position]
-                Log.d("Home", "onItemClick pos $position name $c")
-                gotoCustomerScreen(view, c)
-            }
-        })
-
-    }*/
-
 
     private fun startActivity() {
         val intent = Intent(this, FindCustomerActivity::class.java)
@@ -213,8 +157,6 @@ class HomeActivity : BaseActivity(),OnRowItemClicked, NavigationView.OnNavigatio
     }
 
 
-
-
     private fun setViewPagerAdapter() {
         pagerAdapter = ViewPagerFragmentAdapter(supportFragmentManager)
         home_viewPager.setAdapter(pagerAdapter)
@@ -228,10 +170,92 @@ class HomeActivity : BaseActivity(),OnRowItemClicked, NavigationView.OnNavigatio
     override fun onItem(model: Supplier) {
 
     }
+override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_home -> {
+                gotoHome()
+            }
+            R.id.nav_account -> {
+                account()
+            }
+            R.id.nav_gallery -> {
+                gallery()
+            }
+            R.id.nav_slideshow -> {
+                slideShow()
+            }
+            R.id.nav_helpandSupport -> {
+                helpSupport()
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+            }
+
+            R.id.nav_sign_out -> {
+                showLogoutDialog()
+            }
+        }
+        navDrawer.closeDrawer(GravityCompat.START)
+        return true
+    }
+
+    private fun account() {
+
+    }
+    override fun onBackPressed() {
+        if (navDrawer.isDrawerOpen(GravityCompat.START)) {
+            navDrawer.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
+    private fun gallery() {
+        val shareBody = "Udhaar ka saara Hisaab apne Phone me - Install kabson for FREE"
+        val sharingIntent = Intent(Intent.ACTION_SEND)
+        sharingIntent.type = "text/plain"
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here")
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
+        startActivity(
+            Intent.createChooser(sharingIntent, resources.getString(R.string.share_using))
+        )
+    }
+
+    private fun slideShow() {
         TODO("Not yet implemented")
     }
 
+    private fun helpSupport() {
+        TODO("Not yet implemented")
+    }
 
+    private fun showLogoutDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(R.string.logout)
+            .setMessage(R.string.logoutMsg)
+            .setPositiveButton(R.string.logout) { dialog, _ ->
+                Prefs.save("phone", "")
+                Prefs.save("locale", "en")
+                dialog.dismiss()
+                gotoInitScreen()
+            }
+            .setNegativeButton(R.string.cancel) { dialog, _ ->
+                dialog.dismiss()
+            }
+        builder.create()
+        builder.show()
+    }
+    private fun gotoHome() {
+        TODO("Not yet implemented")
+    }
+    private fun gotoInitScreen() {
+        val intent = Intent(this, LanguageSelect::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+    }
 }
+
+
+
+
+
+
+
+

@@ -9,28 +9,25 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.lifecycle.LiveData
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.okcredit.R
-import com.example.okcredit.Views.adapters.SupplierTransactionAdapter
+import com.example.okcredit.Views.adapters.CustomerTransactionAdapter
 import com.example.okcredit.Views.values.Prefs
 import com.example.okcredit.Views.values.Tools
 import com.example.okcredit.Data.local.Transaction
 import com.example.okcredit.Data.local.Customer
 import com.example.okcredit.Data.local.OkCreditDatabase
 import com.example.okcredit.Data.local.User
-import com.example.okcredit.ViewModel.CustomerViewModel
-import com.example.okcredit.ViewModel.CustomerViewModelFactory
-import com.example.okcredit.Views.adapters.CustomerTransactionAdapter
-import com.example.okcredit.Views.values.OkCreditApplication
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_customer_transaction.*
+import kotlinx.android.synthetic.main.activity_customer_transaction.ivProfile
+import kotlinx.android.synthetic.main.activity_customer_transaction.toolbar
+import kotlinx.android.synthetic.main.activity_customer_transaction.tvName
 import kotlinx.android.synthetic.main.layout_customer_trans_empty.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -41,47 +38,31 @@ import kotlin.math.abs
 class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
     companion object {
         const val tag: String = "CustomerActivity"
-
         const val START_ACTIVITY_2_REQUEST_CODE = 2
         const val START_ACTIVITY_3_REQUEST_CODE = 3
     }
 
-
     private lateinit var transactions: MutableList<Transaction>
     private lateinit var transactionAdapter: CustomerTransactionAdapter
-
     private lateinit var db: OkCreditDatabase
     private var disposable: CompositeDisposable? = null
-    var customerList = mutableListOf<Transaction>()
     private lateinit var customer: Customer
     private lateinit var user: User
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_customer_transaction)
-
         //Initialize views
         initViews()
-
         //Set Customer data
         setCustomerData()
+        val list = mutableListOf<Transaction>()
+        val balance = tvTotalBalance.text.toString()
+        CoroutineScope(Dispatchers.IO).launch {
+            var transctionlist2 =
+                Customer("","","",list,balance,"due")
+            db.getOkCreditDao().updateTrasction(transctionlist2)
+        }
 
-        val appClass = application as OkCreditApplication
-
-        val repository = appClass.repository
-        val viewModelFactory = CustomerViewModelFactory(repository)
-
-        val viewModel = ViewModelProviders.of(this, viewModelFactory)
-            .get(CustomerViewModel::class.java)
-
-        viewModel.getTransactionList().observe(this, Observer {
-            if (it != null)
-                customerList = it as MutableList<Transaction>
-            val linearLayoutManager = LinearLayoutManager(this)
-            rvTransactions.setLayoutManager(linearLayoutManager)
-            val customerAdapter = CustomerTransactionAdapter(customerList, this)
-            rvTransactions.setAdapter(customerAdapter)
-        })
     }
 
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
@@ -89,17 +70,15 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
         //user = intent.getParcelableExtra("user")!!
         customer = intent.getParcelableExtra("customer")!!
         Log.d(tag, "customer===> $customer")
-
         disposable = CompositeDisposable()
         db = OkCreditDatabase.getRoomDatabase(this)
-
-        //cvCardView.setNavigationOnClickListener { onBackPressed() }
-
+        toolbar.setNavigationOnClickListener { onBackPressed() }
         initializeTransactionRecyclerView()
-
         call_btn.setOnClickListener(this)
         btnAcceptPayment.setOnClickListener(this)
         btnGivePayment.setOnClickListener(this)
+//        btnBackArrow.setOnClickListener(this)
+
     }
 
     private fun initializeTransactionRecyclerView() {
@@ -151,7 +130,9 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
         startActivityForResult(
             intent,
             START_ACTIVITY_3_REQUEST_CODE
+
         )
+
     }
 
     private fun setCustomerData() {
@@ -180,15 +161,22 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
                     Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", customer.phone, null))
                 startActivity(phoneIntent)
             }
-
             R.id.btnAcceptPayment -> {
                 gotoAddTransactionScreen("credit")
             }
             R.id.btnGivePayment -> {
                 gotoAddTransactionScreen("debit")
             }
+//            R.id.btnBackArrow -> {
+////                gotoHomeActivity()
+//            }
         }
     }
+
+//    private fun gotoHomeActivity() {
+//        val intent = Intent(this, HomeActivity::class.java)
+//        startActivity(intent)
+//    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == START_ACTIVITY_3_REQUEST_CODE) {
@@ -214,10 +202,14 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun getUserFromDb(): User {
+   /* private fun getUserFromDb(): User {
         val phone = Prefs.getString("phone")
         return db.getOkCreditDao().getUser(phone!!)
-    }
+    }*/
+   private fun getUserFromDb(): User {
+       val phone = Prefs.getString("phone")
+       return db.getOkCreditDao().getUser(phone!!)
+   }
 
     private fun updateDb(): User {
         Log.d(tag, "Customer updated successfully inDb1 ${user.customers[0].balance}")
@@ -227,22 +219,23 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
             transactions = customer.transactions
         }
         Log.d(tag, "Customer updated successfully inDb2 ${user.customers[0].balance}")
-        db.getOkCreditDao().updateUser(user)
+
+        db.getOkCreditDao().updateTrasction(customer)
         return getUserFromDb()
     }
 
     private fun updateCustomer() {
         calculateBalance()
-//        disposable!!.add(
-//            Single.create<User> { e -> e.onSuccess(updateDb()) }
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe({
-//                    user = it
-//                    initializeTransactionRecyclerView()
-//                    Log.d(tag, "Customer updated successfully $user")
-//                }) { handleError(it) }
-//        )
+        /*disposable!!.add(
+            Single.create<User> { e -> e.onSuccess(updateDb()) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    user = it
+                    initializeTransactionRecyclerView()
+                    Log.d(tag, "Customer updated successfully $user")
+                }) { handleError(it) }
+        )*/
         CoroutineScope(Dispatchers.Main).launch {
             initializeTransactionRecyclerView()
         }
@@ -252,17 +245,13 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
     private fun calculateBalance() {
         var debitedAmt = 0.0
         var creditAmt = 0.0
-
         for (t in transactions) {
             if (t.type == "debit") debitedAmt += t.amount?.toDouble()!!
             else creditAmt += t.amount?.toDouble()!!
         }
-
         val bal = creditAmt - debitedAmt
         val temp = NumberFormat.getInstance().format(abs(bal))
-
         Log.d(tag, "bal --- $bal  ---temp--- $temp")
-
         tvTotalBalance.text = "₹ $temp"
         customer.balance = abs(bal).toString()
         if (bal >= 0.0) {
@@ -282,6 +271,4 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
         Log.d(tag, "onStop called from Home")
         disposable?.clear()
     }
-
-
 }

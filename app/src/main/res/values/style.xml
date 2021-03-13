@@ -20,6 +20,6 @@
     </style>
 
     <style name="MyCustomTheme">
-        <item name="mt_textCursorTint">@color/black</item>
-    </style>
+    <item name="mt_textCursorTint">@color/black</item>
+</style>
 </resources>

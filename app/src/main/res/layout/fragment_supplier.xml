@@ -28,7 +28,7 @@
         <Button
             android:id="@+id/btnAddSupplier"
             android:layout_width="wrap_content"
-            android:text="Add Supplier"
+            android:text="@string/add_supplier"
             android:layout_height="wrap_content" />
     </androidx.cardview.widget.CardView>
 

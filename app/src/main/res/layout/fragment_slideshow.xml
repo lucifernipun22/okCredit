@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.example.okcredit.Navigation.SlideshowFragment">
+
+    <TextView
+        android:id="@+id/text_slideshow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:elevation="15dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#dfebe2"/>
+                <TextView
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:drawablePadding="20dp"
+                    android:drawableStart="@drawable/ic_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profile"
+                    android:padding="15dp"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="45dp"
+                    android:background="#dfebe2"/>
+                <TextView
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:drawablePadding="20dp"
+                    android:drawableStart="@drawable/ic_rotating_phone_from_vertical_to_horizontal_position"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Change Number"
+                    android:padding="15dp"
+                    android:layout_gravity="start"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="45dp"
+                    android:background="#dfebe2"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:textSize="15sp"
+                        android:textColor="@color/black"
+                        android:drawablePadding="20dp"
+                        android:drawableStart="@drawable/ic_global"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="App language"
+                        android:padding="15dp"
+                        android:layout_gravity="start"
+                        />
+                    <TextView
+                        android:textSize="20sp"
+                        android:textColor="#50AF50"
+                        android:drawablePadding="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="English"
+
+                        android:padding="15dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_alignParentEnd="true"
+                        />
+                </RelativeLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:elevation="20sp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:drawablePadding="20dp"
+                    android:drawableStart="@drawable/ic_security_pin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set Security PIN"
+                    android:padding="15dp"
+                    android:layout_gravity="start"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="45dp"
+                    android:background="#dfebe2"/>
+                <TextView
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:drawablePadding="20dp"
+                    android:drawableStart="@drawable/ic_applock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="App Lock"
+                    android:padding="15dp"
+                    android:layout_gravity="start"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="45dp"
+                    android:background="#dfebe2"/>
+                <TextView
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:drawablePadding="20dp"
+                    android:drawableStart="@drawable/ic_fingerprint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fingerprint Unlock"
+                    android:padding="15dp"
+                    android:layout_gravity="start"
+                    />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="20dp"
+            android:layout_marginTop="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:drawablePadding="20dp"
+                    android:drawableStart="@drawable/ic_logout_fromalldevices"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sign Out From All Devices"
+                    android:padding="15dp"
+                    android:layout_gravity="start"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="45dp"
+                    android:background="#dfebe2"/>
+                <TextView
+                    android:textSize="18sp"
+                    android:textColor="#ff0000"
+                    android:drawablePadding="20dp"
+                    android:drawableStart="@drawable/ic_signout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sign Out"
+                    android:padding="15dp"
+                    android:layout_gravity="start"
+                    />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#dfebe2"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+
+
+</LinearLayout>
