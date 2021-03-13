@@ -21,13 +21,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OkCredit">
-        <activity android:name=".Views.activities.SupplierTransactionNextActivity"></activity>
+        <activity android:name=".Navigation.AccountFragmentActivity"></activity>
+        <activity android:name=".Views.activities.AccountSupplierActivity" />
+        <activity android:name=".Views.activities.AccountCustomerActivity" />
+        <activity android:name=".Views.activities.AccountActivity" />
+        <activity android:name=".Views.activities.SupplierTransactionNextActivity" />
         <activity android:name=".Views.activities.AddSupplierActvity" />
         <activity android:name=".Views.activities.ReceivedSuppplierActivity" />
         <activity android:name=".Views.activities.SupplierTransactionActivity" />
         <activity android:name=".Views.activities.AddCustomerActivity" />
         <activity android:name=".Views.activities.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".Views.activities.TransactionActivity" />
         <activity android:name=".Views.activities.ReceivedActivity" />
@@ -38,11 +46,7 @@
         <activity android:name=".Views.activities.IntroductionActivity" />
         <activity android:name=".Views.activities.LanguageSelect" />
         <activity android:name=".Views.activities.SplashScreen1">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Views.activities.SplashScreen2" />
         <activity android:name=".Views.activities.SyncCloudDataActivity" />

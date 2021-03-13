@@ -73,9 +73,26 @@
     <string name="received">प्राप्त किया</string>
     <string name="given">दिया हुआ</string>
     <string name="search_or_add">खोजें या जोड़ें</string>
-    <string name="customer">ग्राहक</string>
-    <string name="added_on_09_mar_2021">जोड़ा गया </string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="customers">ग्राहकों</string>
+    <string name="account_statement">खाता विवरण</string>
     <string name="supplier">देने वाला</string>
+    <string name="net_balance">Net Balance</string>
+    <string name="customer_khata">Customer Khata</string>
+    <string name="supplier_khata">Supplier Khata</string>
+    <string name="customer">ग्राहक</string>
+    <string name="added_on_09_mar_2021">13-03-2021 </string>
     <string name="add_from_contacts">संपर्कों से जल्दी से जोड़ने के लिए</string>
     <string name="add_supplier">आपूर्तिकर्ता जोड़ें</string>
+
+    <string name="menu_account">Account</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_help">Help Support</string>
+
+    <string name="logout">Sign Out</string>
+    <string name="logoutMsg">Are you sure you want to Sign out?</string>
+    <string name="share_using">Share via</string>
 </resources>

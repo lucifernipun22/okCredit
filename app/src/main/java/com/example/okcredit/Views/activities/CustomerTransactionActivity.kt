@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.LiveData
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.okcredit.R
@@ -24,7 +25,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_customer_transaction.*
-import kotlinx.android.synthetic.main.customer_item_layout.*
+import kotlinx.android.synthetic.main.activity_customer_transaction.ivProfile
+import kotlinx.android.synthetic.main.activity_customer_transaction.toolbar
+import kotlinx.android.synthetic.main.activity_customer_transaction.tvName
 import kotlinx.android.synthetic.main.layout_customer_trans_empty.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -52,6 +55,14 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
         initViews()
         //Set Customer data
         setCustomerData()
+        val list = mutableListOf<Transaction>()
+        val balance = tvTotalBalance.text.toString()
+        CoroutineScope(Dispatchers.IO).launch {
+            var transctionlist2 =
+                Customer("","","",list,balance,"due")
+            db.getOkCreditDao().updateTrasction(transctionlist2)
+        }
+
     }
 
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
@@ -67,6 +78,7 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
         btnAcceptPayment.setOnClickListener(this)
         btnGivePayment.setOnClickListener(this)
 //        btnBackArrow.setOnClickListener(this)
+
     }
 
     private fun initializeTransactionRecyclerView() {
@@ -118,7 +130,9 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
         startActivityForResult(
             intent,
             START_ACTIVITY_3_REQUEST_CODE
+
         )
+
     }
 
     private fun setCustomerData() {
@@ -188,10 +202,14 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun getUserFromDb(): User {
+   /* private fun getUserFromDb(): User {
         val phone = Prefs.getString("phone")
         return db.getOkCreditDao().getUser(phone!!)
-    }
+    }*/
+   private fun getUserFromDb(): User {
+       val phone = Prefs.getString("phone")
+       return db.getOkCreditDao().getUser(phone!!)
+   }
 
     private fun updateDb(): User {
         Log.d(tag, "Customer updated successfully inDb1 ${user.customers[0].balance}")
@@ -201,23 +219,23 @@ class CustomerTransactionActivity : AppCompatActivity(), View.OnClickListener {
             transactions = customer.transactions
         }
         Log.d(tag, "Customer updated successfully inDb2 ${user.customers[0].balance}")
-        db.getOkCreditDao().updateUser(user)
+
+        db.getOkCreditDao().updateTrasction(customer)
         return getUserFromDb()
     }
 
     private fun updateCustomer() {
         calculateBalance()
-
-//        disposable!!.add(
-//            Single.create<User> { e -> e.onSuccess(updateDb()) }
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe({
-//                    user = it
-//                    initializeTransactionRecyclerView()
-//                    Log.d(tag, "Customer updated successfully $user")
-//                }) { handleError(it) }
-//        )
+        /*disposable!!.add(
+            Single.create<User> { e -> e.onSuccess(updateDb()) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    user = it
+                    initializeTransactionRecyclerView()
+                    Log.d(tag, "Customer updated successfully $user")
+                }) { handleError(it) }
+        )*/
         CoroutineScope(Dispatchers.Main).launch {
             initializeTransactionRecyclerView()
         }

@@ -24,6 +24,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    android {
+        buildFeatures {
+            dataBinding = true
+            viewBinding = true
+        }
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -97,4 +103,11 @@ dependencies {
     implementation 'com.karumi:dexter:4.2.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'org.greenrobot:eventbus:3.1.1'
+
+    //materialsearch
+    implementation 'com.github.mancj:MaterialSearchBar:0.8.2'
+
+    //navigation
+    implementation 'androidx.navigation:navigation-fragment:2.3.3'
+    implementation 'androidx.navigation:navigation-ui:2.3.3'
 }

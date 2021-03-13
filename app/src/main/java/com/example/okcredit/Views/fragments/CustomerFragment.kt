@@ -89,7 +89,7 @@ class CustomerFragment : Fragment(), OnRowItemClicked {
         viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(CustomerViewModel::class.java)
 
-        viewModel.getCustomerList().observe(this, Observer {
+        viewModel.getCustomerList().observe(viewLifecycleOwner, Observer {
             if (it != null)
                 customerList = it as MutableList<Customer>
             if (customerList.size > 1) {
@@ -112,6 +112,7 @@ class CustomerFragment : Fragment(), OnRowItemClicked {
         view.btnFilterfRa.setOnClickListener {
             bottomSheetDialog(view)
         }
+
 
     }
 

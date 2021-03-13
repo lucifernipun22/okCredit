@@ -73,10 +73,26 @@
     <string name="given">Given</string>
     <string name="add_credit">Add Credit</string>
     <string name="search_or_add">Search or Add</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="customers">Customers</string>
+    <string name="account_statement">Account Statement</string>
+    <string name="net_balance">Net Balance</string>
+    <string name="customer_khata">Customer Khata</string>
+    <string name="supplier_khata">Supplier Khata</string>
     <string name="customer">Customer</string>
     <string name="supplier">Supplier</string>
-    <string name="added_on_09_mar_2021">Added on </string>
+    <string name="added_on_09_mar_2021">13-03-2021 </string>
     <string name="add_from_contacts">To quickly add from contacts</string>
     <string name="add_supplier">Add Supplier</string>
 
+    <string name="menu_account">Account</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_help">Help Support</string>
+
+    <string name="logout">Sign Out</string>
+    <string name="logoutMsg">Are you sure you want to Sign out?</string>
+    <string name="share_using">Share via</string>
 </resources>

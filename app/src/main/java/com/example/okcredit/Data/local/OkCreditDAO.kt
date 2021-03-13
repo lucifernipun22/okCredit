@@ -15,6 +15,9 @@ interface OkCreditDAO {
     @Query("select * from customer where name=:newName")
     fun getCustomer(newName: String): LiveData<List<Customer>>
 
+    @Query("SELECT * from User WHERE phone=:phone")
+    fun getUser(phone: String): User
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addTransaction(customerEntity: Transaction)
 
@@ -43,8 +46,7 @@ interface OkCreditDAO {
     fun getSupplier(newName: String): LiveData<List<Supplier>>
 
 
-    @Query("SELECT * from User WHERE phone=:phone")
-    fun getUser(phone: String): User
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(user: User)
@@ -54,6 +56,9 @@ interface OkCreditDAO {
 
     @Update
     fun updateUser(user: User): Int
+
+    @Update
+    fun updateCustomer(user: Customer): Int
 
     @Update
     fun updateTrasction(customerEntity: Customer)

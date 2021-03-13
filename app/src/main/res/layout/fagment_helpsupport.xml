@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.okcredit.Navigation.HelpSupportFragment"
+    xmlns:tools="http://schemas.android.com/tools">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvdemo"
+        />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="20dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dfebe2"/>
+            <TextView
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:drawablePadding="20dp"
+                android:drawableStart="@drawable/ic_howtouse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="How to use OkCredit?"
+                android:padding="15dp"
+                android:layout_gravity="start"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dfebe2"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="20dp"
+        android:layout_marginTop="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:drawablePadding="20dp"
+                android:drawableStart="@drawable/ic_about"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About OkCredit"
+                android:padding="15dp"
+                android:layout_gravity="start"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="45dp"
+                android:background="#dfebe2"/>
+            <TextView
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:drawablePadding="20dp"
+                android:drawableStart="@drawable/ic_privacypolicy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Privacy Policy"
+                android:padding="15dp"
+                android:layout_gravity="start"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dfebe2"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_circular"
+            android:layout_alignParentBottom="true"
+            android:text="Chat with Us"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
+            android:textSize="25sp"
+            android:layout_marginBottom="30dp"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            />
+    </RelativeLayout>
+
+
+</LinearLayout>

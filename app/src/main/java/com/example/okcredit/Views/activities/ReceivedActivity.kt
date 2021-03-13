@@ -19,13 +19,18 @@ import com.example.okcredit.Data.local.Transaction
 import com.example.okcredit.R
 import com.example.okcredit.Views.values.*
 import com.example.okcredit.Data.local.Customer
+import com.example.okcredit.Data.local.OkCreditDatabase
 import com.example.okcredit.ViewModel.CustomerViewModel
 import com.example.okcredit.ViewModel.CustomerViewModelFactory
 import com.san.app.activity.BaseActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_add_customer.*
 import kotlinx.android.synthetic.main.activity_received.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
@@ -45,7 +50,7 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
     private var imageURI: String = ""
 
     private var transact: Transaction? = null
-
+    private lateinit var db: OkCreditDatabase
     private var api: RestAPI? = null
     private var disposable: CompositeDisposable? = null
 
@@ -62,7 +67,7 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
 
         val repository = appClass.repository
         val viewModelFactory = CustomerViewModelFactory(repository)
-
+        db = OkCreditDatabase.getRoomDatabase(this)
         val viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(CustomerViewModel::class.java)
 
@@ -70,10 +75,19 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
         val amount = etAmount.text.toString()
         val time = tvDate.text.toString()
         val note = etNote.text.toString()
+
         val photo = btnAddPhoto.textAlignment.toString()
         var transctionlist =
             Transaction(amount, type, time, note, photo, time)
         list.add(transctionlist)
+        CoroutineScope(Dispatchers.IO).launch {
+           /* var transctionlist2 =
+                Customer("", "", "", list, amount, "due")
+            db.getOkCreditDao().addNewCustomer(transctionlist2)*/
+
+        }
+
+
 
         val newCustomer = Customer(
             customer?.name,
@@ -206,6 +220,7 @@ class ReceivedActivity : BaseActivity(), View.OnClickListener {
         }
         setResult(Activity.RESULT_OK, intent)
         onBackPressed()
+
 
       // createTransact()
     }
