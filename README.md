@@ -3,7 +3,7 @@
 
 OkCredit is a digital ledger app for small business owners and their customers to facilitate the recording of credit/payment transactions digitally all over India.
 
-<a href="https://play.google.com/store/apps/details?id=com.nipun.calculator">
+<a href="https://play.google.com/store/apps/details?id=com.nipun.okcredit">
     <img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
         alt="Get it on Google Play" height="80"/>
 </a>
