@@ -29,6 +29,11 @@ OkCredit is a digital ledger app for small business owners and their customers t
 |<img src=https://miro.medium.com/max/2484/1*1i1f0XV3rLau2OJ5l_JNZg.jpeg height="500px" width="350px"/>|<img src=https://miro.medium.com/max/625/1*MclMfG7DpuHt2KblqAIfQQ.jpeg height="500px" width="350px"/>
 
 
+<img src=https://miro.medium.com/max/625/1*NTUAFVBxKODIjH0RKnW6Ig.gif height="600px" width="350px"/> <img src=https://miro.medium.com/max/625/1*jpTOB9N97gLZET8pncznLQ.gif height="600px" width="350px"/>
+
+
+<img src=https://miro.medium.com/max/625/1*V47ASh-RU3f9D9gYZpmYjA.gif height="600px" width="350px"/> <img src=https://miro.medium.com/max/625/1*HfozmmLuT5HCoV8Zp9O20g.gif height="600px" width="350px"/>
+
 
 
 
