@@ -43,10 +43,32 @@ OkCredit is a digital ledger app for small business owners and their customers t
 # Online Resources:-
 Online Resouces that I used in the project journey.
 
-- https://www.youtube.com/
+* [Youtube](https://www.youtube.com/)
 
-- https://developer.android.com/
+* [Documentatin](https://developer.android.com/)
 
-- https://www.geeksforgeeks.org/
+* [GeeksforGeeks](https://www.geeksforgeeks.org/)
 
-- https://lottiefiles.com/search?q=cart&category=animations
+* [LottieFiles](https://lottiefiles.com/search?q=cart&category=animations)
+
+# MIT License
+
+Copyright (c) 2021 Nipun Ishwar Sarika
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
